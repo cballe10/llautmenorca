@@ -145,13 +145,23 @@
     background: var(--sea-dark);
   }
 
+  /* REAL hero background image */
   .hero-bg {
     position: absolute;
     inset: 0;
+    background-image: url('images/EM-42.webp');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     background:
-      radial-gradient(ellipse at 20% 60%, rgba(44,95,110,0.6) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(184,151,106,0.15) 0%, transparent 50%),
-      linear-gradient(160deg, #0d2830 0%, #1a3d4a 40%, #2c5f6e 100%);
+      linear-gradient(to top, rgba(13,30,40,0.92) 0%, rgba(13,30,40,0.4) 50%, rgba(13,30,40,0.2) 100%),
+      linear-gradient(to right, rgba(13,30,40,0.5) 0%, transparent 60%);
   }
 
   /* Animated wave lines */
@@ -160,6 +170,7 @@
     inset: 0;
     overflow: hidden;
     opacity: 0.15;
+    z-index: 1;
   }
 
   .hero-waves::before, .hero-waves::after {
@@ -184,7 +195,8 @@
   .hero-texture {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(184,151,106,0.12) 1px, transparent 1px);
+    z-index: 1;
+    background-image: radial-gradient(circle, rgba(184,151,106,0.08) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -260,6 +272,7 @@
     position: absolute;
     bottom: 3rem;
     right: 6vw;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -362,50 +375,45 @@
   .about-img-frame {
     width: 100%;
     aspect-ratio: 3/4;
-    background: var(--sea);
     position: relative;
     overflow: hidden;
   }
 
-  /* Placeholder gradient for future image */
-  .about-img-frame::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #1a3d4a, #3d7a8a, #2c5f6e);
+  /* Real boat photo */
+  .about-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   .about-img-frame::after {
-    content: '1939';
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    font-family: var(--serif);
-    font-size: 6rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.07);
-    line-height: 1;
-  }
-
-  .about-img-placeholder {
+    content: '';
     position: absolute;
     inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.4);
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    gap: 0.5rem;
+    background: linear-gradient(to bottom, transparent 60%, rgba(13,40,50,0.3) 100%);
+    pointer-events: none;
   }
 
-  .about-img-placeholder svg {
-    width: 40px;
-    height: 40px;
-    opacity: 0.4;
+  /* Detail image inset at bottom-left */
+  .about-detail-img {
+    position: absolute;
+    bottom: -2rem;
+    left: -2rem;
+    width: 45%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    z-index: 2;
+  }
+
+  .about-detail-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .about-tag {
@@ -421,6 +429,7 @@
     align-items: center;
     justify-content: center;
     gap: 2px;
+    z-index: 3;
   }
 
   .about-tag strong {
@@ -482,6 +491,37 @@
     position: relative;
     transition: background 0.4s;
     cursor: default;
+    overflow: hidden;
+  }
+
+  /* Experience card background photos */
+  .exp-card-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .exp-card-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .exp-card-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 30, 40, 0.78);
+  }
+
+  .exp-card:hover .exp-card-bg { opacity: 1; }
+
+  .exp-card > *:not(.exp-card-bg):not(.exp-card-line) {
+    position: relative;
+    z-index: 1;
   }
 
   .exp-card:hover {
@@ -498,6 +538,7 @@
     width: 0;
     background: linear-gradient(90deg, var(--gold), transparent);
     transition: width 0.5s ease;
+    z-index: 2;
   }
 
   .exp-number {
@@ -588,6 +629,7 @@
     margin-top: 0.05em;
   }
 
+  /* Real photo grid */
   .included-visual {
     position: relative;
     display: grid;
@@ -598,34 +640,22 @@
   }
 
   .inc-img {
-    background: var(--sea-mid);
     overflow: hidden;
     position: relative;
   }
 
   .inc-img:first-child { grid-row: span 2; }
 
-  .inc-img::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+  .inc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
   }
 
-  .inc-img:nth-child(1)::before { background: linear-gradient(135deg, #2c5f6e, #1a3d4a); }
-  .inc-img:nth-child(2)::before { background: linear-gradient(135deg, #3d7a8a, #2c5f6e); }
-  .inc-img:nth-child(3)::before { background: linear-gradient(135deg, #1a3d4a, #0d2830); }
-
-  .inc-img-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.2);
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
+  .inc-img:hover img { transform: scale(1.05); }
 
   /* ── ROUTES ── */
   .routes {
@@ -689,7 +719,7 @@
     line-height: 1.5;
   }
 
-  /* ── INSTAGRAM SECTION ── */
+  /* ── GALLERY / INSTAGRAM ── */
   .gallery-section {
     padding: 10vh 6vw;
     background: var(--sea-dark);
@@ -733,44 +763,34 @@
     color: var(--white);
   }
 
-  /* Image grid placeholders */
+  /* REAL photo grid */
   .img-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 4px;
     margin-bottom: 3rem;
+    margin-top: 2rem;
   }
 
   .img-cell {
     aspect-ratio: 1;
-    background: rgba(255,255,255,0.05);
-    position: relative;
     overflow: hidden;
-    transition: opacity 0.3s;
+    position: relative;
   }
 
-  .img-cell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+  .img-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.85);
   }
 
-  .img-cell:nth-child(1)::before { background: linear-gradient(160deg, #1a3d4a, #3d7a8a); }
-  .img-cell:nth-child(2)::before { background: linear-gradient(200deg, #2c5f6e, #1a3d4a); }
-  .img-cell:nth-child(3)::before { background: linear-gradient(160deg, #3d7a8a, #2c5f6e); }
-  .img-cell:nth-child(4)::before { background: linear-gradient(220deg, #1a3d4a, #2c5f6e); }
-  .img-cell:nth-child(5)::before { background: linear-gradient(160deg, #2c5f6e, #3d7a8a); }
-
-  .img-cell-label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.15);
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+  .img-cell:hover img {
+    transform: scale(1.08);
+    filter: brightness(1);
   }
 
   /* ── CONTACT ── */
@@ -1139,6 +1159,7 @@
 </div>
 
 <!-- ── HERO ── -->
+<!-- Background: EM-42.webp (boat anchored in turquoise cove, people relaxing) -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-texture"></div>
@@ -1174,6 +1195,8 @@
 </section>
 
 <!-- ── ABOUT ── -->
+<!-- Main image: EM-24.webp (iconic red llaüt shot from water level) -->
+<!-- Detail image: EM-12.webp (S'àvia nameplate with emerald water) -->
 <section class="about" id="sobre">
   <div class="about-text">
     <p class="section-label">
@@ -1203,13 +1226,12 @@
 
   <div class="about-visual">
     <div class="about-img-frame">
-      <div class="about-img-placeholder">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M3 17l4-8 4 5 3-3 4 6"/>
-          <circle cx="8" cy="5" r="2"/>
-        </svg>
-        <span>Foto del llaüt</span>
-      </div>
+      <!-- Main: red llaüt from water level, dramatic -->
+      <img src="images/EM-24.webp" alt="S'àvia 1939 llaüt tradicional menorquín en el mar" loading="lazy">
+    </div>
+    <!-- Detail: nameplate + emerald water, floating over main image -->
+    <div class="about-detail-img">
+      <img src="images/EM-12.webp" alt="Placa S'àvia con agua turquesa de fondo" loading="lazy">
     </div>
     <div class="about-tag">
       <strong>1939</strong>
@@ -1221,6 +1243,7 @@
 <div class="divider"></div>
 
 <!-- ── EXPERIENCES ── -->
+<!-- Each card has a subtle background photo on hover -->
 <section class="experiences" id="experiencias">
   <div class="experiences-header">
     <div>
@@ -1243,8 +1266,11 @@
   </div>
 
   <div class="experiences-grid">
-    <!-- Día Completo -->
+    <!-- Día Completo — hover bg: EM-11.webp (diving off boat) -->
     <div class="exp-card">
+      <div class="exp-card-bg">
+        <img src="images/EM-11.webp" alt="Salto desde el llaüt" loading="lazy">
+      </div>
       <div class="exp-number">01</div>
       <div class="exp-name">
         <span data-lang-inline="es" class="active">Día Completo</span>
@@ -1265,8 +1291,11 @@
       <div class="exp-card-line"></div>
     </div>
 
-    <!-- Medio Día -->
+    <!-- Medio Día — hover bg: EM-42.webp (boat in cove, relaxing) -->
     <div class="exp-card">
+      <div class="exp-card-bg">
+        <img src="images/EM-42.webp" alt="Llaüt fondeado en una cala" loading="lazy">
+      </div>
       <div class="exp-number">02</div>
       <div class="exp-name">
         <span data-lang-inline="es" class="active">Medio Día</span>
@@ -1287,8 +1316,11 @@
       <div class="exp-card-line"></div>
     </div>
 
-    <!-- Sunset -->
+    <!-- Sunset — hover bg: WhatsApp sunset photo -->
     <div class="exp-card">
+      <div class="exp-card-bg">
+        <img src="images/WhatsApp_Image_2025-09-27_at_14_30_26.webp" alt="Llaüt al atardecer en Fornells" loading="lazy">
+      </div>
       <div class="exp-number">03</div>
       <div class="exp-name">Sunset</div>
       <div class="exp-price">300 € / barco · 19h–21h</div>
@@ -1308,6 +1340,7 @@
 </section>
 
 <!-- ── INCLUDED ── -->
+<!-- Photo grid: EM-15 (rosé wine) tall left, EM-30 (flag+boat) top right, EM-44 (seagull) bottom right -->
 <section class="included" id="incluido">
   <div>
     <p class="section-label">
@@ -1356,20 +1389,17 @@
   </div>
 
   <div class="included-visual">
+    <!-- Tall left: rosé wine opening (lifestyle / drinks) -->
     <div class="inc-img">
-      <div class="inc-img-placeholder">
-        <span style="font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:0.2em;text-transform:uppercase;">Foto</span>
-      </div>
+      <img src="images/EM-15.webp" alt="Abriendo una botella de vino rosé a bordo" loading="lazy">
     </div>
+    <!-- Top right: boat with Spanish flag (authentic, local) -->
     <div class="inc-img">
-      <div class="inc-img-placeholder">
-        <span style="font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:0.2em;text-transform:uppercase;">Foto</span>
-      </div>
+      <img src="images/EM-30.webp" alt="Llaüt con bandera española en el norte de Menorca" loading="lazy">
     </div>
+    <!-- Bottom right: seagull + striped cushions (relaxed on board) -->
     <div class="inc-img">
-      <div class="inc-img-placeholder">
-        <span style="font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:0.2em;text-transform:uppercase;">Foto</span>
-      </div>
+      <img src="images/EM-44.webp" alt="Gaviota junto al barco mientras se relaja a bordo" loading="lazy">
     </div>
   </div>
 </section>
@@ -1501,6 +1531,7 @@
 </section>
 
 <!-- ── GALLERY ── -->
+<!-- All 5 real photos: EM-11, EM-24, EM-30, EM-44, WhatsApp sunset -->
 <section class="gallery-section" id="galeria">
   <p class="section-label" style="justify-content:center; color: rgba(184,151,106,0.6);">
     <span data-lang-inline="es" class="active">Síguenos</span>
@@ -1514,12 +1545,27 @@
   </h2>
   <p>@savia1939fornells</p>
 
-  <div class="img-grid" style="margin-top: 2rem;">
-    <div class="img-cell"><div class="img-cell-label">Foto</div></div>
-    <div class="img-cell"><div class="img-cell-label">Foto</div></div>
-    <div class="img-cell"><div class="img-cell-label">Foto</div></div>
-    <div class="img-cell"><div class="img-cell-label">Foto</div></div>
-    <div class="img-cell"><div class="img-cell-label">Foto</div></div>
+  <div class="img-grid">
+    <!-- 1: dive off boat — action -->
+    <div class="img-cell">
+      <img src="images/EM-11.webp" alt="Salto desde el llaüt S'àvia" loading="lazy">
+    </div>
+    <!-- 2: boat from water — hero shot -->
+    <div class="img-cell">
+      <img src="images/EM-24.webp" alt="S'àvia 1939 en el mar de Menorca" loading="lazy">
+    </div>
+    <!-- 3: relaxing in cove — lifestyle -->
+    <div class="img-cell">
+      <img src="images/EM-42.webp" alt="Relajándose a bordo en una cala" loading="lazy">
+    </div>
+    <!-- 4: seagull + cushions — detail -->
+    <div class="img-cell">
+      <img src="images/EM-44.webp" alt="Gaviota junto al barco" loading="lazy">
+    </div>
+    <!-- 5: sunset — magical ending -->
+    <div class="img-cell">
+      <img src="images/WhatsApp_Image_2025-09-27_at_14_30_26.webp" alt="Atardecer en el llaüt S'àvia" loading="lazy">
+    </div>
   </div>
 
   <a href="https://www.instagram.com/savia1939fornells/" target="_blank" rel="noopener" class="ig-link">
@@ -1625,13 +1671,9 @@
             <span data-lang-inline="fr">Expérience</span>
           </label>
           <select class="form-select" id="experience" name="experience">
-            <option value="">
-              <span data-lang-inline="es" class="active">Seleccionar...</span>
-              <span data-lang-inline="en">Select...</span>
-              <span data-lang-inline="fr">Choisir...</span>
-            </option>
-            <option value="dia-completo" id="opt-full">Día Completo / Full Day — 450€</option>
-            <option value="medio-dia" id="opt-half">Medio Día / Half Day — 300€</option>
+            <option value="">—</option>
+            <option value="dia-completo">Día Completo / Full Day — 450€</option>
+            <option value="medio-dia">Medio Día / Half Day — 300€</option>
             <option value="sunset">Sunset — 300€</option>
           </select>
         </div>
@@ -1736,23 +1778,19 @@ let currentLang = 'es';
 function setLang(lang) {
   currentLang = lang;
 
-  // Update buttons
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelectorAll('.lang-btn').forEach(btn => {
     if (btn.textContent.toLowerCase() === lang) btn.classList.add('active');
   });
 
-  // Block-level elements
   document.querySelectorAll('[data-lang]').forEach(el => {
     el.classList.toggle('active', el.dataset.lang === lang);
   });
 
-  // Inline elements
   document.querySelectorAll('[data-lang-inline]').forEach(el => {
     el.classList.toggle('active', el.dataset.langInline === lang);
   });
 
-  // Nav links
   document.querySelectorAll('[data-nav-es], [data-nav-en], [data-nav-fr]').forEach(el => {
     el.style.display = 'none';
   });
@@ -1760,11 +1798,9 @@ function setLang(lang) {
     el.style.display = '';
   });
 
-  // HTML lang attribute
   document.documentElement.lang = lang === 'fr' ? 'fr' : lang === 'en' ? 'en' : 'es';
 }
 
-// Initialize
 setLang('es');
 
 // ── SCROLL NAV ──
@@ -1796,7 +1832,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ── INTERSECTION OBSERVER for subtle reveals ──
+// ── INTERSECTION OBSERVER ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
