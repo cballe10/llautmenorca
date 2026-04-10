@@ -111,10 +111,13 @@
   .lang-bar {
     position: fixed;
     top: 0; right: 0;
-    z-index: 1000;
+    z-index: 200;
     display: flex;
     gap: 0;
-    padding: 12px 24px;
+    padding: 8px 16px;
+    background: rgba(26,61,74,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 4px;
   }
 
   .lang-btn {
@@ -766,14 +769,14 @@
   /* REAL photo grid */
   .img-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
     margin-bottom: 3rem;
     margin-top: 2rem;
   }
 
   .img-cell {
-    aspect-ratio: 1;
+    aspect-ratio: 3/4;
     overflow: hidden;
     position: relative;
   }
@@ -1088,6 +1091,7 @@
     border: 1px solid rgba(184,151,106,0.4);
     padding: 0.5rem 1.25rem;
     transition: all 0.3s;
+    margin-right: 110px;
   }
 
   .nav-reserve:hover {
@@ -1106,8 +1110,7 @@
     .included-visual { display: none; }
     .routes-grid { grid-template-columns: repeat(2, 1fr); }
     .contact { grid-template-columns: 1fr; }
-    .img-grid { grid-template-columns: repeat(3, 1fr); }
-    .img-cell:nth-child(4), .img-cell:nth-child(5) { display: none; }
+    .img-grid { grid-template-columns: repeat(2, 1fr); }
     footer { grid-template-columns: 1fr; gap: 2rem; }
     .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
     .nav-links { display: none; }
@@ -1531,7 +1534,7 @@
 </section>
 
 <!-- ── GALLERY ── -->
-<!-- All 5 real photos: EM-11, EM-24, EM-30, EM-44, WhatsApp sunset -->
+<!-- All 4 real photos in gallery -->
 <section class="gallery-section" id="galeria">
   <p class="section-label" style="justify-content:center; color: rgba(184,151,106,0.6);">
     <span data-lang-inline="es" class="active">Síguenos</span>
@@ -1561,10 +1564,6 @@
     <!-- 4: seagull + cushions — detail -->
     <div class="img-cell">
       <img src="images/EM-44.webp" alt="Gaviota junto al barco" loading="lazy">
-    </div>
-    <!-- 5: sunset — magical ending -->
-    <div class="img-cell">
-      <img src="images/WhatsApp_Image_2025-09-27_at_14_30_26.webp" alt="Atardecer en el llaüt S'àvia" loading="lazy">
     </div>
   </div>
 
@@ -1606,7 +1605,7 @@
         </div>
         <div class="contact-item-text">
           <div class="contact-item-label">Email</div>
-          <div class="contact-item-value"><a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a></div>
+          <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#21524057484010181218474e534f444d4d5261464c40484d0f424e4c"><span class="__cf_email__" data-cfemail="730012051a12424a404a151c011d161f1f0033141e121a1f5d101c1e">[email&#160;protected]</span></a></div>
         </div>
       </div>
       <div class="contact-item">
@@ -1755,7 +1754,7 @@
 
   <div class="footer-col">
     <h4>Contacto</h4>
-    <a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#2a594b5c434b1b1319134c4558444f4646596a4d474b434604494547"><span class="__cf_email__" data-cfemail="285b495e414919111b114e475a464d44445b684f45494144064b4745">[email&#160;protected]</span></a>
     <a href="https://wa.me/34611711284">+34 611 711 284</a>
     <a href="https://www.instagram.com/savia1939fornells/" target="_blank">@savia1939fornells</a>
     <p style="margin-top:0.5rem;">Fornells, Menorca, España</p>
@@ -1771,7 +1770,7 @@
   </span>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── LANGUAGE SWITCHER ──
 let currentLang = 'es';
 
@@ -1835,20 +1834,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // ── INTERSECTION OBSERVER ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.exp-card, .route-item, .contact-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
-</script>
-
-</body>
-</html>
+    if (entry.isIntersecti
