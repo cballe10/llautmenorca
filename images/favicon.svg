@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#1A3D4A"/>
+  <!-- Boat hull -->
+  <path d="M6 20 Q16 24 26 20 L24 23 Q16 27 8 23 Z" fill="#B8976A"/>
+  <!-- Mast -->
+  <line x1="16" y1="8" x2="16" y2="21" stroke="#E8DFD0" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Sail -->
+  <path d="M16 9 L23 17 L16 17 Z" fill="#E8DFD0" opacity="0.9"/>
+</svg>
