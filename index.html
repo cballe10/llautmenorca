@@ -908,6 +908,69 @@
     min-height: 600px;
   }
 
+  /* Booking CTA grid */
+  .booking-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: 0 6vw 3rem;
+  }
+
+  .booking-cta-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(184,151,106,0.2);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .booking-cta-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(184,151,106,0.5);
+  }
+
+  .booking-cta-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(184,151,106,0.2);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .booking-cta-name {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--sand-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .booking-cta-price {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .booking-cta-footer {
+    padding: 2.5rem 6vw 4rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    border-top: 1px solid rgba(184,151,106,0.15);
+  }
+
+  .booking-cta-hint {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(232,223,208,0.6);
+    letter-spacing: 0.05em;
+    flex: 1;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--sea-dark);
@@ -1052,6 +1115,8 @@
     .routes-grid { grid-template-columns: repeat(2, 1fr); }
     .booking-header { grid-template-columns: 1fr; }
     .booking-contact-bar { gap: 1.5rem; }
+    .booking-cta-grid { grid-template-columns: 1fr; }
+    .booking-cta-footer { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
     .img-grid { grid-template-columns: repeat(2, 1fr); }
     footer { grid-template-columns: 1fr; gap: 2rem; }
     .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -1553,7 +1618,7 @@
       </div>
       <div class="contact-item-text">
         <div class="contact-item-label">Email</div>
-        <div class="contact-item-value"><a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a></div>
+        <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#b8cbd9ced1d989818b81ded7cad6ddd4d4cbf8dfd5d9d1d496dbd7d5"><span class="__cf_email__" data-cfemail="265547504f47171f151f40495448434a4a5566414b474f4a0845494b">[email&#160;protected]</span></a></div>
       </div>
     </div>
     <div class="contact-item">
@@ -1585,48 +1650,88 @@
     </div>
   </div>
 
-  <!-- Simplybook inline widget -->
-  <div class="simplybook-wrapper">
-    <div id="simplybook-widget-container"></div>
+  <!-- Booking CTA cards -->
+  <div class="booking-cta-grid">
+    <div class="booking-cta-card">
+      <div class="booking-cta-number">01</div>
+      <div class="booking-cta-name">
+        <span data-lang-inline="es" class="active">Día Completo</span>
+        <span data-lang-inline="en">Full Day</span>
+        <span data-lang-inline="fr">Journée Complète</span>
+      </div>
+      <div class="booking-cta-price">450 € / barco</div>
+    </div>
+    <div class="booking-cta-card">
+      <div class="booking-cta-number">02</div>
+      <div class="booking-cta-name">
+        <span data-lang-inline="es" class="active">Medio Día</span>
+        <span data-lang-inline="en">Half Day</span>
+        <span data-lang-inline="fr">Demi-Journée</span>
+      </div>
+      <div class="booking-cta-price">300 € / barco</div>
+    </div>
+    <div class="booking-cta-card">
+      <div class="booking-cta-number">03</div>
+      <div class="booking-cta-name">Sunset</div>
+      <div class="booking-cta-price">300 € / barco · 19h–21h</div>
+    </div>
+  </div>
+
+  <div class="booking-cta-footer">
+    <p class="booking-cta-hint">
+      <span data-lang-inline="es" class="active">Pulsa el botón para ver disponibilidad y reservar al instante →</span>
+      <span data-lang-inline="en">Click the button to check availability and book instantly →</span>
+      <span data-lang-inline="fr">Cliquez sur le bouton pour voir les disponibilités et réserver →</span>
+    </p>
+    <!-- Simplybook button renders here -->
+    <div id="sbw_p5qbo8"></div>
   </div>
 
 </section>
 
-<!-- Simplybook widget scripts — inline calendar mode -->
-<script src="//widget.simplybook.it/v2/widget/widget.js" type="text/javascript"></script>
+<!-- Simplybook button widget -->
 <script type="text/javascript">
-  var widget = new SimplybookWidget({
-    "widget_type": "inline",
-    "url": "https://savia1939.simplybook.it",
-    "theme": "default",
-    "theme_settings": {
-      "timeline_hide_unavailable": "1",
-      "hide_past_days": "1",
-      "timeline_show_end_time": "0",
-      "timeline_modern_display": "as_slots",
-      "sb_base_color": "#1A3D4A",
-      "display_item_mode": "block",
-      "booking_nav_bg_color": "#1A3D4A",
-      "body_bg_color": "#FAFAF8",
-      "dark_font_color": "#1A1A18",
-      "light_font_color": "#FAFAF8",
-      "btn_color_1": "#B8976A",
-      "sb_company_label_color": "#FAFAF8",
-      "hide_img_mode": "0",
-      "show_sidebar": "1",
-      "sb_busy": "#c7b3b3",
-      "sb_available": "#2C5F6E"
-    },
-    "timeline": "modern",
-    "datepicker": "top_calendar",
-    "is_rtl": false,
-    "app_config": {
-      "clear_session": 0,
-      "allow_switch_to_ada": 0,
-      "predefined": []
-    },
-    "container_id": "simplybook-widget-container"
-  });
+  (function(w, d, s, i) {
+    var script = d.createElement(s);
+    script.async = true;
+    script.src = "//widget.simplybook.it/v2/widget/widget.js";
+    script.onload = function() {
+      new SimplybookWidget({
+        "widget_type": "button",
+        "url": "https://savia1939.simplybook.it",
+        "theme": "default",
+        "theme_settings": {
+          "timeline_hide_unavailable": "1",
+          "hide_past_days": "0",
+          "timeline_show_end_time": "0",
+          "timeline_modern_display": "as_slots",
+          "sb_base_color": "#1A3D4A",
+          "display_item_mode": "block",
+          "booking_nav_bg_color": "#1A3D4A",
+          "body_bg_color": "#f2f2f2",
+          "dark_font_color": "#1A1A18",
+          "light_font_color": "#ffffff",
+          "btn_color_1": "#B8976A",
+          "sb_company_label_color": "#ffffff",
+          "hide_img_mode": "0",
+          "show_sidebar": "1",
+          "sb_busy": "#c7b3b3",
+          "sb_available": "#2C5F6E"
+        },
+        "timeline": "modern",
+        "datepicker": "top_calendar",
+        "is_rtl": false,
+        "app_config": {"clear_session": 0, "allow_switch_to_ada": 0, "predefined": []},
+        "button_title": "Reservar ahora",
+        "button_background_color": "#B8976A",
+        "button_text_color": "#1A3D4A",
+        "button_position": "right",
+        "button_position_offset": "55%",
+        "container_id": "sbw_p5qbo8"
+      });
+    };
+    d.head.appendChild(script);
+  })(window, document, 'script', 'sbw_p5qbo8');
 </script>
 
 <!-- ── FOOTER ── -->
@@ -1733,13 +1838,3 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-// ── INTERSECTION OBSERVER ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecti
