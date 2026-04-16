@@ -29,7 +29,7 @@
   "name": "S'àvia 1939 — Alquiler Llaüt Fornells",
   "description": "Alquiler de llaüt tradicional menorquín en Fornells, Menorca. Sin titulación requerida.",
   "url": "https://www.savia1939.com",
-  "telephone": "+34611711284",
+  "telephone": "+34611711581",
   "email": "savia1939fornells@gmail.com",
   "address": {
     "@type": "PostalAddress",
@@ -151,7 +151,6 @@
     background: var(--sea-dark);
   }
 
-  /* REAL hero background image */
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -170,7 +169,6 @@
       linear-gradient(to right, rgba(13,30,40,0.5) 0%, transparent 60%);
   }
 
-  /* Animated wave lines */
   .hero-waves {
     position: absolute;
     inset: 0;
@@ -197,7 +195,6 @@
     50% { transform: translateX(-20%) scaleY(3); }
   }
 
-  /* Dot grid texture */
   .hero-texture {
     position: absolute;
     inset: 0;
@@ -385,7 +382,6 @@
     overflow: hidden;
   }
 
-  /* Real boat photo */
   .about-img-frame img {
     width: 100%;
     height: 100%;
@@ -402,7 +398,6 @@
     pointer-events: none;
   }
 
-  /* Detail image inset at bottom-left */
   .about-detail-img {
     position: absolute;
     bottom: -2rem;
@@ -500,7 +495,6 @@
     overflow: hidden;
   }
 
-  /* Experience card background photos */
   .exp-card-bg {
     position: absolute;
     inset: 0;
@@ -635,7 +629,6 @@
     margin-top: 0.05em;
   }
 
-  /* Real photo grid */
   .included-visual {
     position: relative;
     display: grid;
@@ -696,7 +689,6 @@
   }
 
   .route-item:hover { background: var(--sand-light); }
-
   .route-item:hover .route-num { opacity: 1; }
 
   .route-num {
@@ -769,7 +761,6 @@
     color: var(--white);
   }
 
-  /* REAL photo grid */
   .img-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -833,7 +824,6 @@
     font-weight: 300;
   }
 
-  /* Contact details bar above widget */
   .booking-contact-bar {
     padding: 0 6vw 3rem;
     display: flex;
@@ -889,14 +879,12 @@
 
   .contact-item-value a:hover { color: var(--gold-light); }
 
-  /* Widget wrapper — full width, styled container */
   .simplybook-wrapper {
     background: var(--white);
     position: relative;
     min-height: 600px;
   }
 
-  /* CSS injected to override Simplybook colours */
   .simplybook-wrapper::before {
     content: '';
     position: absolute;
@@ -906,7 +894,6 @@
     z-index: 10;
   }
 
-  /* Calendly wrapper */
   .calendly-wrapper {
     background: var(--white);
     position: relative;
@@ -925,7 +912,6 @@
     width: 100%;
   }
 
-  /* Booking CTA grid */
   .booking-cta-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1154,13 +1140,13 @@
   [data-lang-inline] { display: none; }
   [data-lang-inline].active { display: inline; }
 
-  /* Divider */
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     margin: 0 6vw;
     opacity: 0.3;
   }
+
   /* ── WHATSAPP FLOAT ── */
   .whatsapp-float {
     position: fixed;
@@ -1189,7 +1175,6 @@
     box-shadow: 0 6px 28px rgba(37,211,102,0.55);
   }
 
-  /* Pulse ring animation */
   .whatsapp-float::before {
     content: '';
     position: absolute;
@@ -1204,7 +1189,6 @@
     0% { transform: scale(1); opacity: 0.6; }
     100% { transform: scale(1.7); opacity: 0; }
   }
-
 </style>
 </head>
 <body>
@@ -1230,7 +1214,6 @@
 </div>
 
 <!-- ── HERO ── -->
-<!-- Background: EM-42.webp (boat anchored in turquoise cove, people relaxing) -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-texture"></div>
@@ -1266,8 +1249,6 @@
 </section>
 
 <!-- ── ABOUT ── -->
-<!-- Main image: EM-24.webp (iconic red llaüt shot from water level) -->
-<!-- Detail image: EM-12.webp (S'àvia nameplate with emerald water) -->
 <section class="about" id="sobre">
   <div class="about-text">
     <p class="section-label">
@@ -1297,10 +1278,8 @@
 
   <div class="about-visual">
     <div class="about-img-frame">
-      <!-- Main: red llaüt from water level, dramatic -->
       <img src="images/EM-24.webp" alt="S'àvia 1939 llaüt tradicional menorquín en el mar" loading="lazy">
     </div>
-    <!-- Detail: nameplate + emerald water, floating over main image -->
     <div class="about-detail-img">
       <img src="images/EM-12.webp" alt="Placa S'àvia con agua turquesa de fondo" loading="lazy">
     </div>
@@ -1314,7 +1293,6 @@
 <div class="divider"></div>
 
 <!-- ── EXPERIENCES ── -->
-<!-- Each card has a subtle background photo on hover -->
 <section class="experiences" id="experiencias">
   <div class="experiences-header">
     <div>
@@ -1337,7 +1315,6 @@
   </div>
 
   <div class="experiences-grid">
-    <!-- Día Completo — hover bg: EM-11.webp (diving off boat) -->
     <div class="exp-card">
       <div class="exp-card-bg">
         <img src="images/EM-11.webp" alt="Salto desde el llaüt" loading="lazy">
@@ -1362,7 +1339,6 @@
       <div class="exp-card-line"></div>
     </div>
 
-    <!-- Medio Día — hover bg: EM-42.webp (boat in cove, relaxing) -->
     <div class="exp-card">
       <div class="exp-card-bg">
         <img src="images/EM-42.webp" alt="Llaüt fondeado en una cala" loading="lazy">
@@ -1387,7 +1363,6 @@
       <div class="exp-card-line"></div>
     </div>
 
-    <!-- Sunset — hover bg: EM-30 (red llaüt with flag, atmospheric) -->
     <div class="exp-card">
       <div class="exp-card-bg">
         <img src="images/EM-30.webp" alt="Llaüt S'àvia en el mar" loading="lazy">
@@ -1411,7 +1386,6 @@
 </section>
 
 <!-- ── INCLUDED ── -->
-<!-- Photo grid: EM-15 (rosé wine) tall left, EM-30 (flag+boat) top right, EM-44 (seagull) bottom right -->
 <section class="included" id="incluido">
   <div>
     <p class="section-label">
@@ -1460,15 +1434,12 @@
   </div>
 
   <div class="included-visual">
-    <!-- Tall left: rosé wine opening (lifestyle / drinks) -->
     <div class="inc-img">
       <img src="images/EM-15.webp" alt="Abriendo una botella de vino rosé a bordo" loading="lazy">
     </div>
-    <!-- Top right: boat with Spanish flag (authentic, local) -->
     <div class="inc-img">
       <img src="images/EM-30.webp" alt="Llaüt con bandera española en el norte de Menorca" loading="lazy">
     </div>
-    <!-- Bottom right: seagull + striped cushions (relaxed on board) -->
     <div class="inc-img">
       <img src="images/EM-44.webp" alt="Gaviota junto al barco mientras se relaja a bordo" loading="lazy">
     </div>
@@ -1602,7 +1573,6 @@
 </section>
 
 <!-- ── GALLERY ── -->
-<!-- All 4 real photos in gallery -->
 <section class="gallery-section" id="galeria">
   <p class="section-label" style="justify-content:center; color: rgba(184,151,106,0.6);">
     <span data-lang-inline="es" class="active">Síguenos</span>
@@ -1617,19 +1587,15 @@
   <p>@savia1939fornells</p>
 
   <div class="img-grid">
-    <!-- 1: dive off boat — action -->
     <div class="img-cell">
       <img src="images/EM-11.webp" alt="Salto desde el llaüt S'àvia" loading="lazy">
     </div>
-    <!-- 2: boat from water — hero shot -->
     <div class="img-cell">
       <img src="images/EM-24.webp" alt="S'àvia 1939 en el mar de Menorca" loading="lazy">
     </div>
-    <!-- 3: relaxing in cove — lifestyle -->
     <div class="img-cell">
       <img src="images/EM-42.webp" alt="Relajándose a bordo en una cala" loading="lazy">
     </div>
-    <!-- 4: seagull + cushions — detail -->
     <div class="img-cell">
       <img src="images/EM-44.webp" alt="Gaviota junto al barco" loading="lazy">
     </div>
@@ -1648,7 +1614,6 @@
 <!-- ── BOOKING ── -->
 <section class="booking-section" id="contacto">
 
-  <!-- Header -->
   <div class="booking-header">
     <div>
       <p class="section-label" style="color: rgba(184,151,106,0.6);">
@@ -1669,7 +1634,6 @@
     </p>
   </div>
 
-  <!-- Contact details bar -->
   <div class="booking-contact-bar">
     <div class="contact-item">
       <div class="contact-item-icon">
@@ -1679,7 +1643,7 @@
       </div>
       <div class="contact-item-text">
         <div class="contact-item-label">Email</div>
-        <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#b8cbd9ced1d989818b81ded7cad6ddd4d4cbf8dfd5d9d1d496dbd7d5"><span class="__cf_email__" data-cfemail="265547504f47171f151f40495448434a4a5566414b474f4a0845494b">[email&#160;protected]</span></a></div>
+        <div class="contact-item-value"><a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a></div>
       </div>
     </div>
     <div class="contact-item">
@@ -1690,7 +1654,7 @@
       </div>
       <div class="contact-item-text">
         <div class="contact-item-label">WhatsApp</div>
-        <div class="contact-item-value"><a href="https://wa.me/34611711284">+34 611 711 284</a></div>
+        <div class="contact-item-value"><a href="https://wa.me/34611711581">+34 611 711 581</a></div>
       </div>
     </div>
     <div class="contact-item">
@@ -1711,7 +1675,6 @@
     </div>
   </div>
 
-  <!-- Booking CTA cards -->
   <div class="booking-cta-grid">
     <div class="booking-cta-card">
       <div class="booking-cta-number">01</div>
@@ -1746,7 +1709,6 @@
     </p>
   </div>
 
-  <!-- Calendly inline calendar — sits right on the page -->
   <div class="calendly-wrapper">
     <div class="calendly-inline-widget"
          data-url="https://calendly.com/savia1939fornells"
@@ -1756,7 +1718,6 @@
 
 </section>
 
-<!-- Calendly inline widget -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <!-- ── FOOTER ── -->
@@ -1792,8 +1753,8 @@
 
   <div class="footer-col">
     <h4>Contacto</h4>
-    <a href="/cdn-cgi/l/email-protection#2a594b5c434b1b1319134c4558444f4646596a4d474b434604494547"><span class="__cf_email__" data-cfemail="285b495e414919111b114e475a464d44445b684f45494144064b4745">[email&#160;protected]</span></a>
-    <a href="https://wa.me/34611711284">+34 611 711 284</a>
+    <a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a>
+    <a href="https://wa.me/34611711581">+34 611 711 581</a>
     <a href="https://www.instagram.com/savia1939fornells/" target="_blank">@savia1939fornells</a>
     <p style="margin-top:0.5rem;">Fornells, Menorca, España</p>
   </div>
@@ -1808,7 +1769,7 @@
   </span>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── LANGUAGE SWITCHER ──
 let currentLang = 'es';
 
@@ -1846,24 +1807,12 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 80);
 });
 
-// ── FORM SUBMIT ──
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-  form.style.display = 'none';
-  success.style.display = 'block';
-  success.querySelectorAll('[data-lang-inline]').forEach(el => {
-    el.classList.toggle('active', el.dataset.langInline === currentLang);
-  });
-}
-
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) {
-          e.preventDefault();
+      e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
@@ -1889,7 +1838,7 @@ document.querySelectorAll('.exp-card, .route-item, .contact-item').forEach(el =>
 
 <!-- WhatsApp floating widget -->
 <a class="whatsapp-float"
-   href="https://wa.me/34611711284?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20alquiler%20del%20lla%C3%BCt%20S%27%C3%A0via%201939."
+   href="https://wa.me/34611711581?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20alquiler%20del%20lla%C3%BCt%20S%27%C3%A0via%201939."
    target="_blank"
    rel="noopener"
    aria-label="Contactar por WhatsApp">
