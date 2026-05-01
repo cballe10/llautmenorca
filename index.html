@@ -25,22 +25,36 @@ body{font-family:var(--sans);color:var(--text);background:var(--white);overflow-
 .lang-btn{background:none;border:none;font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;color:rgba(255,255,255,0.7);padding:4px 8px;transition:color .3s}
 .lang-btn.active,.lang-btn:hover{color:var(--gold-light)}
 .lang-btn+.lang-btn{border-left:1px solid rgba(255,255,255,0.3)}
+
+/* ══ HERO ══ */
 .hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden;background:var(--sea-dark)}
 .hero-bg{position:absolute;inset:0;background-image:url('images/EM-42.webp');background-size:cover;background-position:center 40%}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,30,40,.92) 0%,rgba(13,30,40,.4) 50%,rgba(13,30,40,.2) 100%),linear-gradient(to right,rgba(13,30,40,.5) 0%,transparent 60%)}
+/* Lighter overlay so boat is more visible — improves CTR */
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,30,40,.88) 0%,rgba(13,30,40,.18) 55%,rgba(13,30,40,.05) 100%),linear-gradient(to right,rgba(13,30,40,.45) 0%,transparent 70%)}
 .hero-waves{position:absolute;inset:0;overflow:hidden;opacity:.15;z-index:1}
 .hero-waves::before,.hero-waves::after{content:'';position:absolute;width:200%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:50%;animation:wave 8s ease-in-out infinite}
 .hero-waves::before{top:40%;animation-delay:0s}
 .hero-waves::after{top:60%;animation-delay:-4s;opacity:.6}
 @keyframes wave{0%,100%{transform:translateX(-50%) scaleY(1)}50%{transform:translateX(-20%) scaleY(3)}}
-.hero-texture{position:absolute;inset:0;z-index:1;background-image:radial-gradient(circle,rgba(184,151,106,.08) 1px,transparent 1px);background-size:40px 40px}
+.hero-texture{position:absolute;inset:0;z-index:1;background-image:radial-gradient(circle,rgba(184,151,106,.06) 1px,transparent 1px);background-size:40px 40px}
 .hero-content{position:relative;z-index:2;padding:0 6vw 10vh;max-width:900px}
 .hero-year{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-light);margin-bottom:2rem;opacity:0;animation:fadeUp 1s .3s forwards}
 .hero-title{font-family:var(--serif);font-size:clamp(4rem,10vw,9rem);font-weight:300;line-height:.9;color:var(--sand-light);letter-spacing:-.02em;margin-bottom:2rem;opacity:0;animation:fadeUp 1s .5s forwards}
 .hero-title em{font-style:italic;color:var(--gold-light)}
-.hero-sub{font-family:var(--sans);font-size:.85rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,223,208,.7);margin-bottom:3rem;opacity:0;animation:fadeUp 1s .7s forwards}
-.hero-cta{display:inline-flex;align-items:center;gap:1rem;font-family:var(--sans);font-size:.8rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px;transition:all .3s;opacity:0;animation:fadeUp 1s .9s forwards}
-.hero-cta:hover{color:var(--white);border-color:var(--white);gap:1.5rem}
+.hero-sub{font-family:var(--sans);font-size:.85rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,223,208,.75);margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s .7s forwards}
+
+/* ── Hero CTA — more prominent button for higher CTR ── */
+.hero-cta-group{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .9s forwards}
+.hero-cta-primary{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--sans);font-size:.82rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--sea-dark);text-decoration:none;background:var(--gold);padding:.9rem 2.2rem;border:2px solid var(--gold);transition:all .3s;position:relative;overflow:hidden}
+.hero-cta-primary::before{content:'';position:absolute;inset:0;background:var(--gold-light);transform:translateX(-101%);transition:transform .35s ease}
+.hero-cta-primary:hover::before{transform:translateX(0)}
+.hero-cta-primary:hover{border-color:var(--gold-light);gap:1.1rem}
+.hero-cta-primary span{position:relative;z-index:1}
+.hero-cta-primary .arrow{position:relative;z-index:1;transition:transform .3s}
+.hero-cta-primary:hover .arrow{transform:translateX(6px)}
+.hero-cta-secondary{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,223,208,.75);text-decoration:none;border-bottom:1px solid rgba(232,223,208,.3);padding-bottom:3px;transition:all .3s}
+.hero-cta-secondary:hover{color:var(--gold-light);border-color:var(--gold-light)}
+
 .hero-scroll{position:absolute;bottom:3rem;right:6vw;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeIn 1s 1.5s forwards}
 .hero-scroll span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(232,223,208,.5);writing-mode:vertical-rl}
 .scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
@@ -83,7 +97,7 @@ section{position:relative}
 .exp-desc{font-size:.9rem;line-height:1.7;color:rgba(232,223,208,.6);font-weight:300}
 .exp-tag{display:inline-block;margin-top:1.5rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,106,.3);padding:4px 10px;text-decoration:none}
 
-/* ══ BOOKING (elevated, split layout) ══ */
+/* ══ BOOKING ══ */
 .booking-section{background:var(--sea-dark);position:relative;overflow:hidden}
 .booking-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(184,151,106,.05) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
 .booking-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.5fr}
@@ -113,6 +127,35 @@ section{position:relative}
 .booking-right-title{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--sea-dark)}
 .booking-right-badge{font-family:var(--sans);font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,106,.4);padding:4px 10px}
 .calendly-inline-widget{flex:1;width:100%;min-height:640px}
+
+/* ══ EXTRAS SECTION ══ */
+.extras-section{background:var(--sand);padding:12vh 6vw;position:relative;overflow:hidden}
+.extras-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.4}
+.extras-header{text-align:center;margin-bottom:5rem}
+.extras-header h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.1;color:var(--sea-dark);margin-bottom:1.25rem}
+.extras-header h2 em{font-style:italic;color:var(--sea)}
+.extras-header p{font-size:1rem;line-height:1.8;color:var(--text-light);font-weight:300;max-width:620px;margin:0 auto}
+.extras-section .section-label{justify-content:center}
+.extras-section .section-label::before{display:none}
+
+.extras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(44,95,110,.1);border:1.5px solid rgba(44,95,110,.1);margin-bottom:4rem}
+.extra-card{background:var(--sand);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .35s}
+.extra-card:hover{background:var(--white)}
+.extra-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.extra-card:hover::after{transform:scaleX(1)}
+.extra-icon{width:44px;height:44px;margin-bottom:1.5rem;color:var(--gold)}
+.extra-icon svg{width:44px;height:44px;stroke:var(--gold);fill:none;stroke-width:1.25}
+.extra-name{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--sea-dark);margin-bottom:.4rem}
+.extra-price{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.extra-desc{font-size:.88rem;line-height:1.7;color:var(--text-light);font-weight:300}
+
+.extras-cta-block{text-align:center;padding:3.5rem;background:linear-gradient(135deg,var(--sea-dark) 0%,#0f2a35 100%);position:relative;overflow:hidden}
+.extras-cta-block::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(184,151,106,.07) 1px,transparent 1px);background-size:28px 28px}
+.extras-cta-block h3{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--sand-light);margin-bottom:1rem;position:relative;z-index:1}
+.extras-cta-block h3 em{font-style:italic;color:var(--gold-light)}
+.extras-cta-block p{font-size:.9rem;color:rgba(232,223,208,.6);font-weight:300;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8;position:relative;z-index:1}
+.extras-cta-btn{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--sea-dark);text-decoration:none;background:var(--gold);padding:.85rem 2.2rem;border:2px solid var(--gold);transition:all .3s;position:relative;z-index:1}
+.extras-cta-btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
 
 .included{padding:10vh 6vw;background:var(--sand);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
 .included h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.15;color:var(--sea-dark);margin-bottom:2rem}
@@ -178,10 +221,13 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   footer{grid-template-columns:1fr;gap:2rem}
   .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
   .nav-links{display:none}
+  .extras-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-cta-group{flex-direction:column;align-items:flex-start;gap:1rem}
 }
 @media(max-width:600px){
   .routes-grid{grid-template-columns:1fr}
   .included-list{grid-template-columns:1fr}
+  .extras-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -192,6 +238,7 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   <ul class="nav-links">
     <li><a href="#experiencias" data-nav-es>Experiencias</a><a href="#experiencias" data-nav-en style="display:none">Experiences</a><a href="#experiencias" data-nav-fr style="display:none">Expériences</a></li>
     <li><a href="#reservar" data-nav-es>Reservar</a><a href="#reservar" data-nav-en style="display:none">Book</a><a href="#reservar" data-nav-fr style="display:none">Réserver</a></li>
+    <li><a href="#extras" data-nav-es>Extras</a><a href="#extras" data-nav-en style="display:none">Extras</a><a href="#extras" data-nav-fr style="display:none">Extras</a></li>
     <li><a href="#rutas" data-nav-es>Rutas</a><a href="#rutas" data-nav-en style="display:none">Routes</a><a href="#rutas" data-nav-fr style="display:none">Itinéraires</a></li>
   </ul>
   <a href="#reservar" class="nav-reserve" data-nav-es>Reservar</a>
@@ -221,12 +268,21 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
       <span data-lang-inline="en">Traditional llaüt rental · No licence needed · Menorca</span>
       <span data-lang-inline="fr">Location llaüt traditionnel · Sans permis · Minorque</span>
     </p>
-    <a href="#reservar" class="hero-cta">
-      <span data-lang-inline="es" class="active">Reservar ahora</span>
-      <span data-lang-inline="en">Book now</span>
-      <span data-lang-inline="fr">Réserver maintenant</span>
-      →
-    </a>
+    <div class="hero-cta-group">
+      <a href="#reservar" class="hero-cta-primary">
+        <span>
+          <span data-lang-inline="es" class="active">Reservar ahora</span>
+          <span data-lang-inline="en">Book now</span>
+          <span data-lang-inline="fr">Réserver maintenant</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="#experiencias" class="hero-cta-secondary">
+        <span data-lang-inline="es" class="active">Ver experiencias</span>
+        <span data-lang-inline="en">See experiences</span>
+        <span data-lang-inline="fr">Voir les expériences</span>
+      </a>
+    </div>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
@@ -326,7 +382,7 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   </div>
 </section>
 
-<!-- ══ BOOKING — immediately after experiences ══ -->
+<!-- ══ BOOKING ══ -->
 <section class="booking-section" id="reservar">
   <div class="booking-inner">
     <div class="booking-left">
@@ -403,6 +459,292 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
 </section>
 
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<!-- ══ EXTRAS SECTION ══ -->
+<section class="extras-section" id="extras">
+  <div class="extras-header">
+    <p class="section-label">
+      <span data-lang-inline="es" class="active">Haz tu experiencia única</span>
+      <span data-lang-inline="en">Make it unforgettable</span>
+      <span data-lang-inline="fr">Rendez-la inoubliable</span>
+    </p>
+    <h2>
+      <span data-lang="es" class="active">Personaliza<br><em>tu día en el mar</em></span>
+      <span data-lang="en">Personalise<br><em>your day at sea</em></span>
+      <span data-lang="fr">Personnalisez<br><em>votre journée en mer</em></span>
+    </h2>
+    <p>
+      <span data-lang="es" class="active">El barco ya es especial. Los extras lo convierten en algo que recordarás toda la vida. Añade lo que quieras al reservar o escríbenos por WhatsApp y lo preparamos todo para que llegues y solo tengas que disfrutar.</span>
+      <span data-lang="en">The boat is already special. The extras turn it into something you'll remember forever. Add whatever you like when booking, or message us on WhatsApp and we'll take care of everything — you just arrive and enjoy.</span>
+      <span data-lang="fr">Le bateau est déjà spécial. Les extras en font un souvenir inoubliable. Ajoutez ce que vous voulez à la réservation ou écrivez-nous sur WhatsApp — nous préparons tout pour que vous n'ayez plus qu'à profiter.</span>
+    </p>
+  </div>
+
+  <div class="extras-grid">
+
+    <!-- Skipper -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M3 20c0-4 4-7 9-7s9 3 9 7"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Patrón experto</span>
+        <span data-lang-inline="en">Expert skipper</span>
+        <span data-lang-inline="fr">Skipper expert</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Deja el timón en las mejores manos. Nuestro patrón local conoce cada cala, cada corriente y cada secreto de la costa norte. Tú solo relájate y disfruta del paisaje.</span>
+        <span data-lang="en">Leave the helm in the best hands. Our local skipper knows every cove, current and coastal secret of the north. You just sit back and enjoy.</span>
+        <span data-lang="fr">Confiez la barre aux meilleures mains. Notre skipper local connaît chaque crique, chaque courant et chaque secret de la côte nord. Vous n'avez plus qu'à vous détendre.</span>
+      </p>
+    </div>
+
+    <!-- Picnic -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 11h18M12 2v9"/><rect x="2" y="19" width="20" height="3" rx="1"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Picnic menorquín</span>
+        <span data-lang-inline="en">Menorcan picnic</span>
+        <span data-lang-inline="fr">Pique-nique minorquin</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Una cesta con lo mejor de la isla: queso de Menorca, sobrassada artesanal, ensaïmades, olivas y frutas de temporada. Fondeados en una cala virgen, bajo el sol mediterráneo. Así de sencillo, así de perfecto.</span>
+        <span data-lang="en">A basket with the island's finest: Menorcan cheese, artisan sobrassada, ensaïmades, olives and seasonal fruit. Anchored in a virgin cove, under the Mediterranean sun. Simple, perfect.</span>
+        <span data-lang="fr">Un panier avec le meilleur de l'île : fromage de Minorque, sobrassada artisanale, ensaïmades, olives et fruits de saison. À l'ancre dans une crique vierge, sous le soleil méditerranéen. Simple et parfait.</span>
+      </p>
+    </div>
+
+    <!-- Wine & Rosé -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M8 3h8l2 7a6 6 0 01-12 0L8 3zM12 16v5M9 21h6"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Vino & Rosado</span>
+        <span data-lang-inline="en">Wine & Rosé</span>
+        <span data-lang-inline="fr">Vin & Rosé</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Vinos blancos y rosados seleccionados con cuidado, servidos bien fríos a bordo. Hay vistas, hay brisa, hay mar. Solo faltaba la copa.</span>
+        <span data-lang="en">Carefully chosen white and rosé wines, served perfectly chilled on board. The views, the breeze, the sea — all you needed was the glass.</span>
+        <span data-lang="fr">Vins blancs et rosés soigneusement sélectionnés, servis bien frais à bord. La vue, la brise, la mer — il ne manquait plus que le verre.</span>
+      </p>
+    </div>
+
+    <!-- Champagne -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 3h6l2 6a5 5 0 01-10 0L9 3z"/><path d="M12 14v7M8 21h8"/><path d="M18 4l2-2M20 7l2-1M19 10h2"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Champagne & Cava</span>
+        <span data-lang-inline="en">Champagne & Cava</span>
+        <span data-lang-inline="fr">Champagne & Cava</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Para los momentos que se merecen algo especial. Botella bien fría, copas de cristal y el Mediterráneo como telón de fondo. Para celebraciones, aniversarios o simplemente porque sí.</span>
+        <span data-lang="en">For moments that deserve something special. Bottle perfectly chilled, crystal glasses and the Mediterranean as your backdrop. Celebrations, anniversaries — or simply because.</span>
+        <span data-lang="fr">Pour les moments qui méritent quelque chose de spécial. Bouteille bien fraîche, flûtes en cristal et la Méditerranée en toile de fond. Célébrations, anniversaires — ou simplement parce que oui.</span>
+      </p>
+    </div>
+
+    <!-- Birthday / Anniversary decoration -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6 2 2 6 2 12s4 10 10 10 10-4 10-10S18 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/><path d="M12 2v2M8 3l1 1.5M16 3l-1 1.5"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Decoración especial</span>
+        <span data-lang-inline="en">Special decoration</span>
+        <span data-lang-inline="fr">Décoration spéciale</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Flores, guirnaldas, tarta y detalles personalizados para cumpleaños, aniversarios o cualquier celebración. Lo preparamos todo antes de que llegues para que la sorpresa sea perfecta.</span>
+        <span data-lang="en">Flowers, bunting, a small cake and personalised touches for birthdays, anniversaries or any celebration. We set everything up before you arrive so the surprise is perfect.</span>
+        <span data-lang="fr">Fleurs, guirlandes, gâteau et touches personnalisées pour les anniversaires ou toute autre célébration. Nous préparons tout avant votre arrivée pour que la surprise soit parfaite.</span>
+      </p>
+    </div>
+
+    <!-- Romantic sunset -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 17a5 5 0 100-10 5 5 0 000 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/><path d="M2 22h20"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Pack romántico sunset</span>
+        <span data-lang-inline="en">Romantic sunset pack</span>
+        <span data-lang-inline="fr">Pack romantique sunset</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Champagne, flores frescas, tiempo extra en el mar y un atardecer que cambia de color mientras brindáis. El escenario perfecto para una noche que jamás olvidaréis.</span>
+        <span data-lang="en">Champagne, fresh flowers, extra time at sea and a sunset that shifts colour as you toast. The perfect setting for an evening you'll never forget.</span>
+        <span data-lang="fr">Champagne, fleurs fraîches, temps supplémentaire en mer et un coucher de soleil qui change de couleur pendant que vous trinquez. Le décor parfait pour une soirée inoubliable.</span>
+      </p>
+    </div>
+
+    <!-- Proposal -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Pedida de mano</span>
+        <span data-lang-inline="en">Proposal package</span>
+        <span data-lang-inline="fr">Demande en mariage</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Lo organizamos todo en secreto para que el momento sea mágico: decoración a bordo, champagne, flores y el Mediterráneo como cómplice. Solo tienes que decir que sí.</span>
+        <span data-lang="en">We organise everything in secret so the moment is truly magical: on-board decoration, champagne, flowers and the Mediterranean as your accomplice. All you have to do is say yes.</span>
+        <span data-lang="fr">Nous organisons tout en secret pour que le moment soit magique : décoration à bord, champagne, fleurs et la Méditerranée comme complice. Il ne vous reste plus qu'à dire oui.</span>
+      </p>
+    </div>
+
+    <!-- Charcuterie & cheese -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6"/><path d="M2 12c0 3.31 4.48 6 10 6s10-2.69 10-6"/><path d="M6 10c0 1.1 2.69 2 6 2s6-.9 6-2"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Tabla de quesos y embutidos</span>
+        <span data-lang-inline="en">Charcuterie & cheese board</span>
+        <span data-lang-inline="fr">Plateau charcuterie & fromages</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Una tabla con lo mejor de Menorca: queso curado de la isla, sobrassada, mortadela, frutos secos y mermelada artesanal. El aperitivo perfecto mientras fondeas en una cala.</span>
+        <span data-lang="en">A board with the best of Menorca: island-cured cheese, sobrassada, mortadella, nuts and artisan jam. The perfect aperitif while anchored in a cove.</span>
+        <span data-lang="fr">Un plateau avec le meilleur de Minorque : fromage affiné de l'île, sobrassada, mortadelle, noix et confiture artisanale. L'apéritif parfait à l'ancre dans une crique.</span>
+      </p>
+    </div>
+
+    <!-- Fresh fruit platter -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.34a1 1 0 001.66 1.11C7 18.68 9.71 16 17 14"/><path d="M17 8c0-5-3-7-3-7s-1.43 4.46 1 9"/><path d="M17 8c5 0 7-3 7-3s-4.46-1.43-9 1"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Bandeja de fruta fresca</span>
+        <span data-lang-inline="en">Fresh fruit platter</span>
+        <span data-lang-inline="fr">Plateau de fruits frais</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Fruta de temporada, fresca y cortada, lista para disfrutar entre baños. El refresco más natural del Mediterráneo. Perfecta para familias y días de calor.</span>
+        <span data-lang="en">Seasonal fruit, fresh and sliced, ready to enjoy between swims. The most natural refreshment the Mediterranean has to offer. Perfect for families and hot summer days.</span>
+        <span data-lang="fr">Fruits de saison, frais et coupés, prêts à déguster entre deux baignades. Le rafraîchissement le plus naturel de la Méditerranée. Idéal pour les familles et les journées chaudes.</span>
+      </p>
+    </div>
+
+    <!-- Paella -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 5V2M8 6L6 4M16 6l2-2"/><path d="M8 13h8M10 10l4 6M14 10l-4 6"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Paella a bordo</span>
+        <span data-lang-inline="en">Paella on board</span>
+        <span data-lang-inline="fr">Paella à bord</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio</span>
+        <span data-lang-inline="en">Ask for price</span>
+        <span data-lang-inline="fr">Prix sur demande</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Una paella recién hecha entregada directamente en el barco mientras estás fondeado en tu cala favorita. Elaborada por restaurantes locales de confianza. El almuerzo mediterráneo definitivo.</span>
+        <span data-lang="en">A freshly made paella delivered directly to the boat while you're anchored in your favourite cove. Prepared by trusted local restaurants. The ultimate Mediterranean lunch.</span>
+        <span data-lang="fr">Une paella fraîchement préparée livrée directement au bateau pendant que vous êtes à l'ancre dans votre crique préférée. Préparée par des restaurants locaux de confiance. Le déjeuner méditerranéen par excellence.</span>
+      </p>
+    </div>
+
+    <!-- Extra hour -->
+    <div class="extra-card">
+      <div class="extra-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="extra-name">
+        <span data-lang-inline="es" class="active">Hora extra</span>
+        <span data-lang-inline="en">Extra hour</span>
+        <span data-lang-inline="fr">Heure supplémentaire</span>
+      </div>
+      <div class="extra-price">
+        <span data-lang-inline="es" class="active">Consultar precio · Sujeto a disponibilidad</span>
+        <span data-lang-inline="en">Ask for price · Subject to availability</span>
+        <span data-lang-inline="fr">Prix sur demande · Sous réserve de disponibilité</span>
+      </div>
+      <p class="extra-desc">
+        <span data-lang="es" class="active">Cuando el tiempo se pasa volando y no quieres volver. Añade una hora más y sigue disfrutando del mar, la cala y la calma. Consúltanos la disponibilidad al reservar.</span>
+        <span data-lang="en">When the time flies and you're not ready to head back. Add an extra hour and keep enjoying the sea, the cove and the calm. Ask us about availability when booking.</span>
+        <span data-lang="fr">Quand le temps passe trop vite et que vous n'êtes pas prêt à rentrer. Ajoutez une heure et continuez à profiter de la mer, de la crique et de la tranquillité. Renseignez-vous sur la disponibilité à la réservation.</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- CTA block below extras -->
+  <div class="extras-cta-block">
+    <h3>
+      <span data-lang="es" class="active">¿Tienes algo especial<br><em>en mente?</em></span>
+      <span data-lang="en">Have something special<br><em>in mind?</em></span>
+      <span data-lang="fr">Vous avez quelque chose<br><em>de spécial en tête?</em></span>
+    </h3>
+    <p>
+      <span data-lang="es" class="active">No te cortes. Si tienes una idea para hacer el día perfecto — una pedida de mano, un cumpleaños, una sorpresa — escríbenos y lo hacemos realidad. El Mediterráneo es el escenario, nosotros ponemos el resto.</span>
+      <span data-lang="en">Don't hold back. If you have an idea for the perfect day — a proposal, a birthday, a surprise — just message us and we'll make it happen. The Mediterranean is the stage, we provide everything else.</span>
+      <span data-lang="fr">N'hésitez pas. Si vous avez une idée pour la journée parfaite — une demande en mariage, un anniversaire, une surprise — écrivez-nous et nous la réaliserons. La Méditerranée est la scène, nous nous occupons du reste.</span>
+    </p>
+    <a href="https://wa.me/34611711581?text=Hola%2C%20me%20gustar%C3%ADa%20personalizar%20mi%20experiencia%20en%20el%20lla%C3%BCt%20S%27%C3%A0via%201939." target="_blank" rel="noopener" class="extras-cta-btn">
+      <span data-lang-inline="es" class="active">Hablar con nosotros →</span>
+      <span data-lang-inline="en">Talk to us →</span>
+      <span data-lang-inline="fr">Nous contacter →</span>
+    </a>
+  </div>
+</section>
 
 <section class="included" id="incluido">
   <div>
@@ -534,7 +876,7 @@ const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.1});
-document.querySelectorAll('.exp-card,.route-item,.booking-pill,.booking-contact-row').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .6s ease,transform .6s ease';obs.observe(el)});
+document.querySelectorAll('.exp-card,.route-item,.booking-pill,.booking-contact-row,.extra-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .6s ease,transform .6s ease';obs.observe(el)});
 </script>
 
 <a class="whatsapp-float" href="https://wa.me/34611711581?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20alquiler%20del%20lla%C3%BCt%20S%27%C3%A0via%201939." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
