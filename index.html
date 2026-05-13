@@ -81,7 +81,7 @@ section{position:relative}
 .experiences-header{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:end;margin-bottom:6rem}
 .experiences-header h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.1;color:var(--sand-light)}
 .experiences-header p{font-size:.95rem;line-height:1.8;color:rgba(232,223,208,.65);font-weight:300;align-self:end}
-.experiences-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.experiences-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
 .exp-card{background:rgba(255,255,255,.04);border:1px solid rgba(184,151,106,.15);padding:3rem 2.5rem;position:relative;transition:background .4s;cursor:default;overflow:hidden}
 .exp-card-bg{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .5s ease}
 .exp-card-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
@@ -92,10 +92,55 @@ section{position:relative}
 .exp-card:hover .exp-card-line{width:100%}
 .exp-card-line{position:absolute;bottom:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),transparent);transition:width .5s ease;z-index:2}
 .exp-number{font-family:var(--serif);font-size:4rem;font-weight:300;color:rgba(184,151,106,.2);line-height:1;margin-bottom:1.5rem}
-.exp-name{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--sand-light);margin-bottom:.5rem}
-.exp-price{font-family:var(--sans);font-size:.75rem;font-weight:500;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
-.exp-desc{font-size:.9rem;line-height:1.7;color:rgba(232,223,208,.6);font-weight:300}
-.exp-tag{display:inline-block;margin-top:1.5rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,106,.3);padding:4px 10px;text-decoration:none}
+.exp-name{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--sand-light);margin-bottom:.25rem}
+.exp-duration{font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.15em;color:rgba(232,223,208,.45);text-transform:uppercase;margin-bottom:1rem}
+.exp-desc{font-size:.88rem;line-height:1.7;color:rgba(232,223,208,.6);font-weight:300}
+.exp-tag{display:inline-block;margin-top:1.25rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,151,106,.3);padding:4px 10px;text-decoration:none}
+/* ── Seasonal pricing table inside exp-card ── */
+.season-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.season-table th{font-family:var(--sans);font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:.4rem .3rem;text-align:center;border-bottom:1px solid rgba(184,151,106,.2)}
+.season-table th:first-child{text-align:left}
+.season-table th.s-high{color:#e8c97a}
+.season-table th.s-mid{color:var(--gold)}
+.season-table th.s-low{color:rgba(184,151,106,.55)}
+.season-table td{font-family:var(--serif);font-size:1.1rem;font-weight:300;text-align:center;padding:.35rem .3rem;border-bottom:1px solid rgba(255,255,255,.05);color:var(--sand-light)}
+.season-table td:first-child{font-family:var(--sans);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,223,208,.45);text-align:left}
+.season-table td.s-high{color:#e8c97a}
+.season-table td.s-mid{color:var(--gold-light)}
+.season-table td.s-low{color:rgba(232,223,208,.45)}
+/* ── Booking seasonal table ── */
+.booking-season-wrap{margin-bottom:2.5rem}
+.booking-season-header{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0;margin-bottom:.4rem}
+.booking-season-header span{font-family:var(--sans);font-size:.52rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:.35rem .2rem}
+.booking-season-header .sh-name{text-align:left;color:rgba(184,151,106,.45)}
+.booking-season-header .sh-high{color:#e8c97a}
+.booking-season-header .sh-mid{color:var(--gold)}
+.booking-season-header .sh-low{color:rgba(184,151,106,.5)}
+.booking-season-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;background:rgba(255,255,255,.03);border:1px solid rgba(184,151,106,.12);margin-bottom:3px;transition:border-color .3s,background .3s}
+.booking-season-row:hover{border-color:rgba(184,151,106,.35);background:rgba(255,255,255,.06)}
+.booking-season-row>div{padding:.7rem .5rem;display:flex;flex-direction:column;justify-content:center}
+.bsr-name{font-family:var(--serif);font-size:.95rem;font-weight:300;color:var(--sand-light)}
+.bsr-time{font-size:.58rem;color:rgba(232,223,208,.35);letter-spacing:.08em;margin-top:2px}
+.bsr-price{font-family:var(--serif);font-size:1rem;text-align:center;font-weight:300}
+.bsr-price.ph{color:#e8c97a}
+.bsr-price.pm{color:var(--gold-light)}
+.bsr-price.pl{color:rgba(232,223,208,.45)}
+
+/* ── Season legend banner ── */
+.season-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:1.5rem}
+.season-badge{padding:.85rem 1rem;display:flex;flex-direction:column;gap:.25rem;position:relative;overflow:hidden}
+.season-badge::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.season-badge.sb-high{background:rgba(232,201,122,.08);border:1px solid rgba(232,201,122,.25)}
+.season-badge.sb-high::before{background:#e8c97a}
+.season-badge.sb-mid{background:rgba(184,151,106,.07);border:1px solid rgba(184,151,106,.2)}
+.season-badge.sb-mid::before{background:var(--gold)}
+.season-badge.sb-low{background:rgba(184,151,106,.03);border:1px solid rgba(184,151,106,.1)}
+.season-badge.sb-low::before{background:rgba(184,151,106,.4)}
+.sb-label{font-family:var(--sans);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.sb-high .sb-label{color:#e8c97a}
+.sb-mid .sb-label{color:var(--gold)}
+.sb-low .sb-label{color:rgba(184,151,106,.6)}
+.sb-dates{font-family:var(--sans);font-size:.62rem;font-weight:300;line-height:1.5;color:rgba(232,223,208,.5)}
 
 /* ══ BOOKING ══ */
 .booking-section{background:var(--sea-dark);position:relative;overflow:hidden}
@@ -211,7 +256,7 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
 [data-lang-inline]{display:none}[data-lang-inline].active{display:inline}
 @media(max-width:900px){
   .about{grid-template-columns:1fr}.about-visual{display:none}
-  .experiences-header{grid-template-columns:1fr}.experiences-grid{grid-template-columns:1fr}
+  .experiences-header{grid-template-columns:1fr}.experiences-grid{grid-template-columns:repeat(2,1fr)}
   .booking-inner{grid-template-columns:1fr}
   .booking-left{padding:3rem 6vw;border-bottom:1px solid rgba(184,151,106,.15)}
   .booking-left::after{display:none}
@@ -339,25 +384,100 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
       <span data-lang="fr">À bord vous trouverez des boissons, des en-cas, du matériel de snorkeling et des serviettes. Tout est prêt pour profiter de la mer.</span>
     </p>
   </div>
+
+  <!-- Season legend -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3rem">
+    <div style="padding:.75rem 1rem;background:rgba(232,201,122,.07);border:1px solid rgba(232,201,122,.2);border-top:3px solid #e8c97a">
+      <div style="font-family:var(--sans);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#e8c97a;margin-bottom:.25rem">
+        <span data-lang-inline="es" class="active">Temporada Alta</span><span data-lang-inline="en">High Season</span><span data-lang-inline="fr">Haute Saison</span>
+      </div>
+      <div style="font-size:.65rem;color:rgba(232,223,208,.5);font-weight:300;line-height:1.6">21 Jun – 30 Ago</div>
+    </div>
+    <div style="padding:.75rem 1rem;background:rgba(184,151,106,.06);border:1px solid rgba(184,151,106,.18);border-top:3px solid var(--gold)">
+      <div style="font-family:var(--sans);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem">
+        <span data-lang-inline="es" class="active">Temporada Media</span><span data-lang-inline="en">Mid Season</span><span data-lang-inline="fr">Moy. Saison</span>
+      </div>
+      <div style="font-size:.65rem;color:rgba(232,223,208,.5);font-weight:300;line-height:1.6">01–20 Jun &amp; 01–30 Sep</div>
+    </div>
+    <div style="padding:.75rem 1rem;background:rgba(184,151,106,.02);border:1px solid rgba(184,151,106,.1);border-top:3px solid rgba(184,151,106,.4)">
+      <div style="font-family:var(--sans);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(184,151,106,.6);margin-bottom:.25rem">
+        <span data-lang-inline="es" class="active">Temporada Baja</span><span data-lang-inline="en">Low Season</span><span data-lang-inline="fr">Basse Saison</span>
+      </div>
+      <div style="font-size:.65rem;color:rgba(232,223,208,.5);font-weight:300;line-height:1.6">01–30 May &amp; 01–30 Oct</div>
+    </div>
+  </div>
+
   <div class="experiences-grid">
+    <!-- Full Day -->
     <div class="exp-card">
-      <div class="exp-card-bg"><img src="images/EM-11.webp" alt="" loading="lazy"></div>
+      <div class="exp-card-bg"><img src="images/EM-24.webp" alt="" loading="lazy"></div>
       <div class="exp-number">01</div>
-      <div class="exp-name"><span data-lang-inline="es" class="active">Mañana</span><span data-lang-inline="en">Morning</span><span data-lang-inline="fr">Matin</span></div>
-      <div class="exp-price">400 € · 10:00–14:00</div>
+      <div class="exp-name"><span data-lang-inline="es" class="active">Día completo</span><span data-lang-inline="en">Full Day</span><span data-lang-inline="fr">Journée complète</span></div>
+      <div class="exp-duration">8h · <span data-lang-inline="es" class="active">Consultar horario</span><span data-lang-inline="en">Ask for schedule</span><span data-lang-inline="fr">Horaire sur demande</span></div>
+      <table class="season-table">
+        <thead><tr>
+          <th></th>
+          <th class="s-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></th>
+          <th class="s-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></th>
+          <th class="s-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td><span data-lang-inline="es" class="active">Precio</span><span data-lang-inline="en">Price</span><span data-lang-inline="fr">Prix</span></td>
+          <td class="s-high">700 €</td><td class="s-mid">500 €</td><td class="s-low">300 €</td>
+        </tr></tbody>
+      </table>
       <p class="exp-desc">
-        <span data-lang="es" class="active">Dedica una mañana al mar. Explora varias calas del norte, fondea en rincones vírgenes y disfruta de una comida relajada a bordo.</span>
-        <span data-lang="en">Dedicate a morning to the sea. Explore northern coves, anchor in virgin spots and enjoy a relaxed lunch on board.</span>
-        <span data-lang="fr">Consacrez une matinée à la mer. Explorez des criques et profitez d'un déjeuner détendu à bord.</span>
+        <span data-lang="es" class="active">El día perfecto en el mar. Ocho horas navegando por las calas más vírgenes del norte, bañándote, comiendo a bordo y desconectando del mundo.</span>
+        <span data-lang="en">The perfect day at sea. Eight hours sailing through the most unspoiled northern coves, swimming, eating on board and leaving the world behind.</span>
+        <span data-lang="fr">La journée parfaite en mer. Huit heures à naviguer dans les criques les plus sauvages du nord, se baigner, déjeuner à bord et oublier le monde.</span>
       </p>
       <a href="#reservar" class="exp-tag"><span data-lang-inline="es" class="active">Reservar</span><span data-lang-inline="en">Book</span><span data-lang-inline="fr">Réserver</span></a>
       <div class="exp-card-line"></div>
     </div>
+    <!-- Morning -->
+    <div class="exp-card">
+      <div class="exp-card-bg"><img src="images/EM-11.webp" alt="" loading="lazy"></div>
+      <div class="exp-number">02</div>
+      <div class="exp-name"><span data-lang-inline="es" class="active">Mañana</span><span data-lang-inline="en">Morning</span><span data-lang-inline="fr">Matin</span></div>
+      <div class="exp-duration">4h · 10:00–14:00</div>
+      <table class="season-table">
+        <thead><tr>
+          <th></th>
+          <th class="s-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></th>
+          <th class="s-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></th>
+          <th class="s-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td><span data-lang-inline="es" class="active">Precio</span><span data-lang-inline="en">Price</span><span data-lang-inline="fr">Prix</span></td>
+          <td class="s-high">400 €</td><td class="s-mid">300 €</td><td class="s-low">200 €</td>
+        </tr></tbody>
+      </table>
+      <p class="exp-desc">
+        <span data-lang="es" class="active">Dedica una mañana al mar. Explora varias calas del norte, fondea en rincones vírgenes y disfruta de un aperitivo a bordo.</span>
+        <span data-lang="en">Dedicate a morning to the sea. Explore northern coves, anchor in virgin spots and enjoy an aperitif on board.</span>
+        <span data-lang="fr">Consacrez une matinée à la mer. Explorez des criques et profitez d'un apéritif à bord.</span>
+      </p>
+      <a href="#reservar" class="exp-tag"><span data-lang-inline="es" class="active">Reservar</span><span data-lang-inline="en">Book</span><span data-lang-inline="fr">Réserver</span></a>
+      <div class="exp-card-line"></div>
+    </div>
+    <!-- Afternoon -->
     <div class="exp-card">
       <div class="exp-card-bg"><img src="images/EM-42.webp" alt="" loading="lazy"></div>
-      <div class="exp-number">02</div>
+      <div class="exp-number">03</div>
       <div class="exp-name"><span data-lang-inline="es" class="active">Tarde</span><span data-lang-inline="en">Afternoon</span><span data-lang-inline="fr">Après-midi</span></div>
-      <div class="exp-price">400 € · 15:00–19:00</div>
+      <div class="exp-duration">4h · 15:00–19:00</div>
+      <table class="season-table">
+        <thead><tr>
+          <th></th>
+          <th class="s-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></th>
+          <th class="s-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></th>
+          <th class="s-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td><span data-lang-inline="es" class="active">Precio</span><span data-lang-inline="en">Price</span><span data-lang-inline="fr">Prix</span></td>
+          <td class="s-high">400 €</td><td class="s-mid">300 €</td><td class="s-low">200 €</td>
+        </tr></tbody>
+      </table>
       <p class="exp-desc">
         <span data-lang="es" class="active">Descubre calas escondidas, date un baño en aguas cristalinas y disfruta de un aperitivo a bordo. Siempre a tu ritmo.</span>
         <span data-lang="en">Discover hidden coves, swim in crystal-clear waters and enjoy an aperitif on board. Always at your pace.</span>
@@ -366,11 +486,24 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
       <a href="#reservar" class="exp-tag"><span data-lang-inline="es" class="active">Reservar</span><span data-lang-inline="en">Book</span><span data-lang-inline="fr">Réserver</span></a>
       <div class="exp-card-line"></div>
     </div>
+    <!-- Sunset -->
     <div class="exp-card">
       <div class="exp-card-bg"><img src="images/EM-30.webp" alt="" loading="lazy"></div>
-      <div class="exp-number">03</div>
+      <div class="exp-number">04</div>
       <div class="exp-name">Sunset</div>
-      <div class="exp-price">350 € · 19:30–21:30</div>
+      <div class="exp-duration">3h · 19:30–21:30</div>
+      <table class="season-table">
+        <thead><tr>
+          <th></th>
+          <th class="s-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></th>
+          <th class="s-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></th>
+          <th class="s-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td><span data-lang-inline="es" class="active">Precio</span><span data-lang-inline="en">Price</span><span data-lang-inline="fr">Prix</span></td>
+          <td class="s-high">300 €</td><td class="s-mid">250 €</td><td class="s-low">200 €</td>
+        </tr></tbody>
+      </table>
       <p class="exp-desc">
         <span data-lang="es" class="active">Navega al atardecer mientras el cielo se tiñe de dorados y rosados. Copa en mano, íntimo y romántico.</span>
         <span data-lang="en">Sail at sunset while the sky turns golden and pink. Glass in hand. Intimate and romantic.</span>
@@ -401,18 +534,50 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
         <span data-lang="en">Pick a date on the calendar. No waiting, no emails. Prefer to reach us directly? We're on WhatsApp.</span>
         <span data-lang="fr">Choisissez une date. Sans attente. Vous préférez nous contacter? Nous sommes sur WhatsApp.</span>
       </p>
-      <div class="booking-pills">
-        <div class="booking-pill">
-          <span class="booking-pill-name"><span data-lang-inline="es" class="active">Mañana</span><span data-lang-inline="en">Morning</span><span data-lang-inline="fr">Matin</span></span>
-          <div class="booking-pill-detail"><span class="booking-pill-price">400 €</span><span class="booking-pill-time">10:00 – 14:00</span></div>
+      <div class="season-legend">
+        <div class="season-badge sb-high">
+          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Alta</span><span data-lang-inline="en">High Season</span><span data-lang-inline="fr">Haute Saison</span></span>
+          <span class="sb-dates">21 Jun – 30 Ago</span>
         </div>
-        <div class="booking-pill">
-          <span class="booking-pill-name"><span data-lang-inline="es" class="active">Tarde</span><span data-lang-inline="en">Afternoon</span><span data-lang-inline="fr">Après-midi</span></span>
-          <div class="booking-pill-detail"><span class="booking-pill-price">400 €</span><span class="booking-pill-time">15:00 – 19:00</span></div>
+        <div class="season-badge sb-mid">
+          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Media</span><span data-lang-inline="en">Mid Season</span><span data-lang-inline="fr">Moy. Saison</span></span>
+          <span class="sb-dates">01–20 Jun<br>01–30 Sep</span>
         </div>
-        <div class="booking-pill">
-          <span class="booking-pill-name">Sunset</span>
-          <div class="booking-pill-detail"><span class="booking-pill-price">350 €</span><span class="booking-pill-time">19:30 – 21:30</span></div>
+        <div class="season-badge sb-low">
+          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Baja</span><span data-lang-inline="en">Low Season</span><span data-lang-inline="fr">Basse Saison</span></span>
+          <span class="sb-dates">01–30 May<br>01–30 Oct</span>
+        </div>
+      </div>
+      <div class="booking-season-wrap">
+        <div class="booking-season-header">
+          <span class="sh-name"></span>
+          <span class="sh-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span>
+          <span class="sh-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span>
+          <span class="sh-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Día completo</span><span data-lang-inline="en">Full Day</span><span data-lang-inline="fr">Journée</span></span><span class="bsr-time">8h</span></div>
+          <div><span class="bsr-price ph">700 €</span></div>
+          <div><span class="bsr-price pm">500 €</span></div>
+          <div><span class="bsr-price pl">300 €</span></div>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Mañana</span><span data-lang-inline="en">Morning</span><span data-lang-inline="fr">Matin</span></span><span class="bsr-time">4h · 10:00–14:00</span></div>
+          <div><span class="bsr-price ph">400 €</span></div>
+          <div><span class="bsr-price pm">300 €</span></div>
+          <div><span class="bsr-price pl">200 €</span></div>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Tarde</span><span data-lang-inline="en">Afternoon</span><span data-lang-inline="fr">Après-midi</span></span><span class="bsr-time">4h · 15:00–19:00</span></div>
+          <div><span class="bsr-price ph">400 €</span></div>
+          <div><span class="bsr-price pm">300 €</span></div>
+          <div><span class="bsr-price pl">200 €</span></div>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name">Sunset</span><span class="bsr-time">3h · 19:30–21:30</span></div>
+          <div><span class="bsr-price ph">300 €</span></div>
+          <div><span class="bsr-price pm">250 €</span></div>
+          <div><span class="bsr-price pl">200 €</span></div>
         </div>
       </div>
       <div class="booking-contacts">
@@ -837,9 +1002,10 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   </div>
   <div class="footer-col">
     <h4><span data-lang-inline="es" class="active">Experiencias</span><span data-lang-inline="en">Experiences</span><span data-lang-inline="fr">Expériences</span></h4>
-    <a href="#experiencias"><span data-lang-inline="es" class="active">Mañana — 400€ · 10:00–14:00</span><span data-lang-inline="en">Morning — 400€ · 10:00–14:00</span><span data-lang-inline="fr">Matin — 400€ · 10:00–14:00</span></a>
-    <a href="#experiencias"><span data-lang-inline="es" class="active">Tarde — 400€ · 15:00–19:00</span><span data-lang-inline="en">Afternoon — 400€ · 15:00–19:00</span><span data-lang-inline="fr">Après-midi — 400€ · 15:00–19:00</span></a>
-    <a href="#experiencias">Sunset — 350€ · 19:30–21:30</a>
+    <a href="#experiencias"><span data-lang-inline="es" class="active">Día completo — desde 300€ · 8h</span><span data-lang-inline="en">Full Day — from 300€ · 8h</span><span data-lang-inline="fr">Journée — dès 300€ · 8h</span></a>
+    <a href="#experiencias"><span data-lang-inline="es" class="active">Mañana — desde 200€ · 10:00–14:00</span><span data-lang-inline="en">Morning — from 200€ · 10:00–14:00</span><span data-lang-inline="fr">Matin — dès 200€ · 10:00–14:00</span></a>
+    <a href="#experiencias"><span data-lang-inline="es" class="active">Tarde — desde 200€ · 15:00–19:00</span><span data-lang-inline="en">Afternoon — from 200€ · 15:00–19:00</span><span data-lang-inline="fr">Après-midi — dès 200€ · 15:00–19:00</span></a>
+    <a href="#experiencias">Sunset — desde 200€ · 19:30–21:30</a>
   </div>
   <div class="footer-col">
     <h4>Contacto</h4>
