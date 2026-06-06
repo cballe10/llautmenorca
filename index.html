@@ -265,6 +265,23 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
 .whatsapp-float svg{width:30px;height:30px}
 .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55)}
 .whatsapp-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:waPulse 2.5s ease-out infinite;z-index:-1}
+/* ══ STICKY BOOKING BAR ══ */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:990;background:rgba(15,42,53,.97);backdrop-filter:blur(12px);border-top:1px solid rgba(184,151,106,.2);padding:.75rem 6vw;display:flex;align-items:center;justify-content:space-between;gap:1rem;transform:translateY(100%);transition:transform .4s ease;box-shadow:0 -4px 32px rgba(0,0,0,.35)}
+.sticky-bar.visible{transform:translateY(0)}
+.sticky-bar-prices{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.sticky-bar-item{display:flex;flex-direction:column;align-items:center;gap:1px}
+.sticky-bar-item span:first-child{font-family:var(--sans);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(184,151,106,.6)}
+.sticky-bar-item span:last-child{font-family:var(--serif);font-size:1rem;font-weight:300;color:var(--sand-light)}
+.sticky-bar-sep{width:1px;height:28px;background:rgba(184,151,106,.15);flex-shrink:0}
+.sticky-bar-cta{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--sea-dark);text-decoration:none;background:var(--gold);padding:.7rem 1.75rem;border:2px solid var(--gold);transition:all .3s;white-space:nowrap;flex-shrink:0}
+.sticky-bar-cta:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.sticky-bar-label{font-family:var(--serif);font-size:1rem;font-weight:300;color:var(--sand-light);white-space:nowrap}
+@media(max-width:700px){.sticky-bar-prices{display:none}.sticky-bar{justify-content:center}.sticky-bar-label{display:none}}
+
+/* ══ UPGRADED exp-tag CTA ══ */
+.exp-tag{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--sea-dark);background:var(--gold);border:2px solid var(--gold);padding:.6rem 1.25rem;text-decoration:none;transition:all .3s}
+.exp-tag:hover{background:var(--gold-light);border-color:var(--gold-light)}
+
 @keyframes waPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
 [data-lang]{display:none}[data-lang].active{display:block}
 [data-lang-inline]{display:none}[data-lang-inline].active{display:inline}
@@ -345,6 +362,116 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
+
+<!-- ══ BOOKING ══ -->
+<section class="booking-section" id="reservar">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <p class="section-label" style="color:rgba(184,151,106,.5)">
+        <span data-lang-inline="es" class="active">Reservas</span>
+        <span data-lang-inline="en">Bookings</span>
+        <span data-lang-inline="fr">Réservations</span>
+      </p>
+      <h2>
+        <span data-lang="es" class="active">Reserva tu<br><em>aventura</em></span>
+        <span data-lang="en">Book your<br><em>adventure</em></span>
+        <span data-lang="fr">Réservez votre<br><em>aventure</em></span>
+      </h2>
+      <p>
+        <span data-lang="es" class="active">Elige una fecha en el calendario. Sin esperas ni correos. Si prefieres contactar directamente, estamos en WhatsApp.</span>
+        <span data-lang="en">Pick a date on the calendar. No waiting, no emails. Prefer to reach us directly? We're on WhatsApp.</span>
+        <span data-lang="fr">Choisissez une date. Sans attente. Vous préférez nous contacter? Nous sommes sur WhatsApp.</span>
+      </p>
+      <div class="season-legend">
+        <div class="season-badge sb-high">
+          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Alta</span><span data-lang-inline="en">High Season</span><span data-lang-inline="fr">Haute Saison</span></span>
+          <span class="sb-dates">21 Jun – 30 Ago</span>
+        </div>
+        <div class="season-badge sb-mid">
+          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Media</span><span data-lang-inline="en">Mid Season</span><span data-lang-inline="fr">Moy. Saison</span></span>
+          <span class="sb-dates">01–20 Jun<br>01–30 Sep</span>
+        </div>
+        <div class="season-badge sb-low">
+          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Baja</span><span data-lang-inline="en">Low Season</span><span data-lang-inline="fr">Basse Saison</span></span>
+          <span class="sb-dates">01–30 May<br>01–30 Oct</span>
+        </div>
+      </div>
+      <div class="booking-season-wrap">
+        <div class="booking-season-header">
+          <span class="sh-name"></span>
+          <span class="sh-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span>
+          <span class="sh-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span>
+          <span class="sh-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Día completo</span><span data-lang-inline="en">Full Day</span><span data-lang-inline="fr">Journée</span></span><span class="bsr-time">8h</span></div>
+          <div><span class="bsr-price ph">700 €</span></div>
+          <div><span class="bsr-price pm">500 €</span></div>
+          <div><span class="bsr-price pl">300 €</span></div>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Mañana</span><span data-lang-inline="en">Morning</span><span data-lang-inline="fr">Matin</span></span><span class="bsr-time">4h · 10:00–14:00</span></div>
+          <div><span class="bsr-price ph">400 €</span></div>
+          <div><span class="bsr-price pm">300 €</span></div>
+          <div><span class="bsr-price pl">200 €</span></div>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Tarde</span><span data-lang-inline="en">Afternoon</span><span data-lang-inline="fr">Après-midi</span></span><span class="bsr-time">4h · 15:00–19:00</span></div>
+          <div><span class="bsr-price ph">400 €</span></div>
+          <div><span class="bsr-price pm">300 €</span></div>
+          <div><span class="bsr-price pl">200 €</span></div>
+        </div>
+        <div class="booking-season-row">
+          <div><span class="bsr-name">Sunset</span><span class="bsr-time">3h · 19:30–21:30</span></div>
+          <div><span class="bsr-price ph">300 €</span></div>
+          <div><span class="bsr-price pm">250 €</span></div>
+          <div><span class="bsr-price pl">200 €</span></div>
+        </div>
+      </div>
+      <div class="booking-contacts">
+        <div class="booking-contact-row">
+          <div class="booking-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div><span class="booking-contact-label">WhatsApp</span><div class="booking-contact-value"><a href="https://wa.me/34611711581">+34 611 711 581</a></div></div>
+        </div>
+        <div class="booking-contact-row">
+          <div class="booking-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div><span class="booking-contact-label">Email</span><div class="booking-contact-value"><a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a></div></div>
+        </div>
+        <div class="booking-contact-row">
+          <div class="booking-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <span class="booking-contact-label"><span data-lang-inline="es" class="active">Ubicación</span><span data-lang-inline="en">Location</span><span data-lang-inline="fr">Localisation</span></span>
+            <div class="booking-contact-value">P.º Marítimo Gumersindo Riera, Fornells</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-right">
+      <div class="booking-right-top"></div>
+      <div class="booking-right-header">
+        <span class="booking-right-title">
+          <span data-lang-inline="es" class="active">Selecciona tu fecha</span>
+          <span data-lang-inline="en">Select your date</span>
+          <span data-lang-inline="fr">Choisissez votre date</span>
+        </span>
+        <span class="booking-right-badge">
+          <span data-lang-inline="es" class="active">Disponibilidad en tiempo real</span>
+          <span data-lang-inline="en">Live availability</span>
+          <span data-lang-inline="fr">Disponibilité en direct</span>
+        </span>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/savia1939fornells" style="min-width:320px;height:660px;"></div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <section class="about" id="sobre">
   <div class="about-text">
@@ -525,114 +652,6 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
       </p>
       <a href="#reservar" class="exp-tag"><span data-lang-inline="es" class="active">Reservar</span><span data-lang-inline="en">Book</span><span data-lang-inline="fr">Réserver</span></a>
       <div class="exp-card-line"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ BOOKING ══ -->
-<section class="booking-section" id="reservar">
-  <div class="booking-inner">
-    <div class="booking-left">
-      <p class="section-label" style="color:rgba(184,151,106,.5)">
-        <span data-lang-inline="es" class="active">Reservas</span>
-        <span data-lang-inline="en">Bookings</span>
-        <span data-lang-inline="fr">Réservations</span>
-      </p>
-      <h2>
-        <span data-lang="es" class="active">Reserva tu<br><em>aventura</em></span>
-        <span data-lang="en">Book your<br><em>adventure</em></span>
-        <span data-lang="fr">Réservez votre<br><em>aventure</em></span>
-      </h2>
-      <p>
-        <span data-lang="es" class="active">Elige una fecha en el calendario. Sin esperas ni correos. Si prefieres contactar directamente, estamos en WhatsApp.</span>
-        <span data-lang="en">Pick a date on the calendar. No waiting, no emails. Prefer to reach us directly? We're on WhatsApp.</span>
-        <span data-lang="fr">Choisissez une date. Sans attente. Vous préférez nous contacter? Nous sommes sur WhatsApp.</span>
-      </p>
-      <div class="season-legend">
-        <div class="season-badge sb-high">
-          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Alta</span><span data-lang-inline="en">High Season</span><span data-lang-inline="fr">Haute Saison</span></span>
-          <span class="sb-dates">21 Jun – 30 Ago</span>
-        </div>
-        <div class="season-badge sb-mid">
-          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Media</span><span data-lang-inline="en">Mid Season</span><span data-lang-inline="fr">Moy. Saison</span></span>
-          <span class="sb-dates">01–20 Jun<br>01–30 Sep</span>
-        </div>
-        <div class="season-badge sb-low">
-          <span class="sb-label"><span data-lang-inline="es" class="active">Temporada Baja</span><span data-lang-inline="en">Low Season</span><span data-lang-inline="fr">Basse Saison</span></span>
-          <span class="sb-dates">01–30 May<br>01–30 Oct</span>
-        </div>
-      </div>
-      <div class="booking-season-wrap">
-        <div class="booking-season-header">
-          <span class="sh-name"></span>
-          <span class="sh-high"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span>
-          <span class="sh-mid"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span>
-          <span class="sh-low"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span>
-        </div>
-        <div class="booking-season-row">
-          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Día completo</span><span data-lang-inline="en">Full Day</span><span data-lang-inline="fr">Journée</span></span><span class="bsr-time">8h</span></div>
-          <div><span class="bsr-price ph">700 €</span></div>
-          <div><span class="bsr-price pm">500 €</span></div>
-          <div><span class="bsr-price pl">300 €</span></div>
-        </div>
-        <div class="booking-season-row">
-          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Mañana</span><span data-lang-inline="en">Morning</span><span data-lang-inline="fr">Matin</span></span><span class="bsr-time">4h · 10:00–14:00</span></div>
-          <div><span class="bsr-price ph">400 €</span></div>
-          <div><span class="bsr-price pm">300 €</span></div>
-          <div><span class="bsr-price pl">200 €</span></div>
-        </div>
-        <div class="booking-season-row">
-          <div><span class="bsr-name"><span data-lang-inline="es" class="active">Tarde</span><span data-lang-inline="en">Afternoon</span><span data-lang-inline="fr">Après-midi</span></span><span class="bsr-time">4h · 15:00–19:00</span></div>
-          <div><span class="bsr-price ph">400 €</span></div>
-          <div><span class="bsr-price pm">300 €</span></div>
-          <div><span class="bsr-price pl">200 €</span></div>
-        </div>
-        <div class="booking-season-row">
-          <div><span class="bsr-name">Sunset</span><span class="bsr-time">3h · 19:30–21:30</span></div>
-          <div><span class="bsr-price ph">300 €</span></div>
-          <div><span class="bsr-price pm">250 €</span></div>
-          <div><span class="bsr-price pl">200 €</span></div>
-        </div>
-      </div>
-      <div class="booking-contacts">
-        <div class="booking-contact-row">
-          <div class="booking-contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          </div>
-          <div><span class="booking-contact-label">WhatsApp</span><div class="booking-contact-value"><a href="https://wa.me/34611711581">+34 611 711 581</a></div></div>
-        </div>
-        <div class="booking-contact-row">
-          <div class="booking-contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <div><span class="booking-contact-label">Email</span><div class="booking-contact-value"><a href="mailto:savia1939fornells@gmail.com">savia1939fornells@gmail.com</a></div></div>
-        </div>
-        <div class="booking-contact-row">
-          <div class="booking-contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <div>
-            <span class="booking-contact-label"><span data-lang-inline="es" class="active">Ubicación</span><span data-lang-inline="en">Location</span><span data-lang-inline="fr">Localisation</span></span>
-            <div class="booking-contact-value">P.º Marítimo Gumersindo Riera, Fornells</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="booking-right">
-      <div class="booking-right-top"></div>
-      <div class="booking-right-header">
-        <span class="booking-right-title">
-          <span data-lang-inline="es" class="active">Selecciona tu fecha</span>
-          <span data-lang-inline="en">Select your date</span>
-          <span data-lang-inline="fr">Choisissez votre date</span>
-        </span>
-        <span class="booking-right-badge">
-          <span data-lang-inline="es" class="active">Disponibilidad en tiempo real</span>
-          <span data-lang-inline="en">Live availability</span>
-          <span data-lang-inline="fr">Disponibilité en direct</span>
-        </span>
-      </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/savia1939fornells" style="min-width:320px;height:660px;"></div>
     </div>
   </div>
 </section>
@@ -1075,6 +1094,31 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   </span>
 </div>
 
+<!-- ══ STICKY BOOKING BAR ══ -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-prices">
+    <div class="sticky-bar-item">
+      <span><span data-lang-inline="es" class="active">Día completo</span><span data-lang-inline="en">Full Day</span><span data-lang-inline="fr">Journée</span></span>
+      <span><span style="color:#e8c97a">700</span> / <span style="color:var(--gold-light)">500</span> / <span style="opacity:.55">300</span> €</span>
+    </div>
+    <div class="sticky-bar-sep"></div>
+    <div class="sticky-bar-item">
+      <span><span data-lang-inline="es" class="active">Mañana / Tarde</span><span data-lang-inline="en">Morning / Afternoon</span><span data-lang-inline="fr">Matin / Après-midi</span></span>
+      <span><span style="color:#e8c97a">400</span> / <span style="color:var(--gold-light)">300</span> / <span style="opacity:.55">200</span> €</span>
+    </div>
+    <div class="sticky-bar-sep"></div>
+    <div class="sticky-bar-item">
+      <span>Sunset</span>
+      <span><span style="color:#e8c97a">300</span> / <span style="color:var(--gold-light)">250</span> / <span style="opacity:.55">200</span> €</span>
+    </div>
+  </div>
+  <a href="#reservar" class="sticky-bar-cta">
+    <span data-lang-inline="es" class="active">Reservar ahora →</span>
+    <span data-lang-inline="en">Book now →</span>
+    <span data-lang-inline="fr">Réserver →</span>
+  </a>
+</div>
+
 <script>
 let currentLang='es';
 function setLang(lang){
@@ -1089,10 +1133,21 @@ function setLang(lang){
 }
 setLang('es');
 const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
+const stickyBar=document.getElementById('stickyBar');
+// Show sticky bar after scrolling past the hero, hide when booking section is visible
+const heroEl=document.querySelector('.hero');
+const bookingEl=document.querySelector('.booking-section');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled',window.scrollY>80);
+  const heroBottom=heroEl.getBoundingClientRect().bottom;
+  const bookingTop=bookingEl.getBoundingClientRect().top;
+  const bookingBottom=bookingEl.getBoundingClientRect().bottom;
+  const inBooking=bookingTop<window.innerHeight&&bookingBottom>0;
+  stickyBar.classList.toggle('visible',heroBottom<0&&!inBooking);
+});
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.1});
-document.querySelectorAll('.exp-card,.route-item,.booking-pill,.booking-contact-row,.extra-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .6s ease,transform .6s ease';obs.observe(el)});
+document.querySelectorAll('.exp-card,.route-item,.booking-contact-row,.extra-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .6s ease,transform .6s ease';obs.observe(el)});
 </script>
 
 <a class="whatsapp-float" href="https://wa.me/34611711581?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20alquiler%20del%20lla%C3%BCt%20S%27%C3%A0via%201939." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
