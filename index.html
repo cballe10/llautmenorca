@@ -281,13 +281,15 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
 /* ══ UPGRADED exp-tag CTA ══ */
 .exp-tag{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--sea-dark);background:var(--gold);border:2px solid var(--gold);padding:.6rem 1.25rem;text-decoration:none;transition:all .3s}
 .exp-tag:hover{background:var(--gold-light);border-color:var(--gold-light)}
+/* season pills hidden on desktop, shown mobile-only via @media(max-width:600px) */
+.season-pills{display:none}
 
 @keyframes waPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
 [data-lang]{display:none}[data-lang].active{display:block}
 [data-lang-inline]{display:none}[data-lang-inline].active{display:inline}
 @media(max-width:900px){
   .about{grid-template-columns:1fr}.about-visual{display:none}
-  .experiences-header{grid-template-columns:1fr}.experiences-grid{grid-template-columns:repeat(2,1fr)}
+  .experiences-header{grid-template-columns:1fr}.experiences-grid{grid-template-columns:1fr}
   .booking-inner{grid-template-columns:1fr}
   .booking-left{padding:3rem 6vw;border-bottom:1px solid rgba(184,151,106,.15)}
   .booking-left::after{display:none}
@@ -299,11 +301,47 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
   .nav-links{display:none}
   .extras-grid{grid-template-columns:repeat(2,1fr)}
   .hero-cta-group{flex-direction:column;align-items:flex-start;gap:1rem}
+  /* Fix season table on mobile — horizontal scroll */
+  .season-table{font-size:.85rem}
+  .season-table th{font-size:.5rem;padding:.35rem .2rem;letter-spacing:.08em}
+  .season-table td{font-size:.95rem;padding:.3rem .2rem}
+  .season-table td:first-child{font-size:.52rem}
+  /* booking season table */
+  .booking-season-header{grid-template-columns:1.2fr 1fr 1fr 1fr}
+  .booking-season-row{grid-template-columns:1.2fr 1fr 1fr 1fr}
+  .bsr-name{font-size:.85rem}
+  .bsr-price{font-size:.9rem}
+  /* sticky bar + whatsapp */
+  .whatsapp-float{bottom:5rem}
 }
 @media(max-width:600px){
   .routes-grid{grid-template-columns:1fr}
   .included-list{grid-template-columns:1fr}
   .extras-grid{grid-template-columns:1fr}
+  .experiences-grid{grid-template-columns:1fr}
+  /* On very small screens, show season pricing as 3 stacked pills instead of table */
+  .season-table{display:none}
+  .season-pills{display:flex;flex-direction:column;gap:4px;margin:1rem 0}
+  .season-pill-row{display:flex;align-items:center;justify-content:space-between;padding:.55rem .75rem;background:rgba(255,255,255,.04);border-left:3px solid transparent}
+  .season-pill-row.ph{border-color:#e8c97a}
+  .season-pill-row.pm{border-color:var(--gold)}
+  .season-pill-row.pl{border-color:rgba(184,151,106,.3)}
+  .spr-label{font-family:var(--sans);font-size:.58rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+  .spr-label.ph{color:#e8c97a}
+  .spr-label.pm{color:var(--gold)}
+  .spr-label.pl{color:rgba(184,151,106,.5)}
+  .spr-price{font-family:var(--serif);font-size:1.1rem;font-weight:300}
+  .spr-price.ph{color:#e8c97a}
+  .spr-price.pm{color:var(--gold-light)}
+  .spr-price.pl{color:rgba(232,223,208,.45)}
+  /* fix booking season table on small screens */
+  .booking-season-header{grid-template-columns:1.4fr .9fr .9fr .9fr}
+  .booking-season-row{grid-template-columns:1.4fr .9fr .9fr .9fr}
+  .booking-season-row>div{padding:.6rem .3rem}
+  .bsr-name{font-size:.78rem}
+  .bsr-time{font-size:.52rem}
+  .bsr-price{font-size:.85rem}
+  .booking-season-header span{font-size:.45rem;letter-spacing:.08em}
 }
 </style>
 </head>
@@ -567,6 +605,11 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
           <td class="s-high">700 €</td><td class="s-mid">500 €</td><td class="s-low">300 €</td>
         </tr></tbody>
       </table>
+      <div class="season-pills">
+        <div class="season-pill-row ph"><span class="spr-label ph"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span><span class="spr-price ph">700 €</span></div>
+        <div class="season-pill-row pm"><span class="spr-label pm"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span><span class="spr-price pm">500 €</span></div>
+        <div class="season-pill-row pl"><span class="spr-label pl"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span><span class="spr-price pl">300 €</span></div>
+      </div>
       <p class="exp-desc">
         <span data-lang="es" class="active">El día perfecto en el mar. Ocho horas navegando por las calas más vírgenes del norte, bañándote, comiendo a bordo y desconectando del mundo.</span>
         <span data-lang="en">The perfect day at sea. Eight hours sailing through the most unspoiled northern coves, swimming, eating on board and leaving the world behind.</span>
@@ -593,6 +636,11 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
           <td class="s-high">400 €</td><td class="s-mid">300 €</td><td class="s-low">200 €</td>
         </tr></tbody>
       </table>
+      <div class="season-pills">
+        <div class="season-pill-row ph"><span class="spr-label ph"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span><span class="spr-price ph">400 €</span></div>
+        <div class="season-pill-row pm"><span class="spr-label pm"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span><span class="spr-price pm">300 €</span></div>
+        <div class="season-pill-row pl"><span class="spr-label pl"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span><span class="spr-price pl">200 €</span></div>
+      </div>
       <p class="exp-desc">
         <span data-lang="es" class="active">Dedica una mañana al mar. Explora varias calas del norte, fondea en rincones vírgenes y disfruta de un aperitivo a bordo.</span>
         <span data-lang="en">Dedicate a morning to the sea. Explore northern coves, anchor in virgin spots and enjoy an aperitif on board.</span>
@@ -619,6 +667,11 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
           <td class="s-high">400 €</td><td class="s-mid">300 €</td><td class="s-low">200 €</td>
         </tr></tbody>
       </table>
+      <div class="season-pills">
+        <div class="season-pill-row ph"><span class="spr-label ph"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span><span class="spr-price ph">400 €</span></div>
+        <div class="season-pill-row pm"><span class="spr-label pm"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span><span class="spr-price pm">300 €</span></div>
+        <div class="season-pill-row pl"><span class="spr-label pl"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span><span class="spr-price pl">200 €</span></div>
+      </div>
       <p class="exp-desc">
         <span data-lang="es" class="active">Descubre calas escondidas, date un baño en aguas cristalinas y disfruta de un aperitivo a bordo. Siempre a tu ritmo.</span>
         <span data-lang="en">Discover hidden coves, swim in crystal-clear waters and enjoy an aperitif on board. Always at your pace.</span>
@@ -645,6 +698,11 @@ nav.scrolled{background:rgba(26,61,74,.97);backdrop-filter:blur(10px);padding:1r
           <td class="s-high">300 €</td><td class="s-mid">250 €</td><td class="s-low">200 €</td>
         </tr></tbody>
       </table>
+      <div class="season-pills">
+        <div class="season-pill-row ph"><span class="spr-label ph"><span data-lang-inline="es" class="active">Alta</span><span data-lang-inline="en">High</span><span data-lang-inline="fr">Haute</span></span><span class="spr-price ph">300 €</span></div>
+        <div class="season-pill-row pm"><span class="spr-label pm"><span data-lang-inline="es" class="active">Media</span><span data-lang-inline="en">Mid</span><span data-lang-inline="fr">Moy.</span></span><span class="spr-price pm">250 €</span></div>
+        <div class="season-pill-row pl"><span class="spr-label pl"><span data-lang-inline="es" class="active">Baja</span><span data-lang-inline="en">Low</span><span data-lang-inline="fr">Basse</span></span><span class="spr-price pl">200 €</span></div>
+      </div>
       <p class="exp-desc">
         <span data-lang="es" class="active">Navega al atardecer mientras el cielo se tiñe de dorados y rosados. Copa en mano, íntimo y romántico.</span>
         <span data-lang="en">Sail at sunset while the sky turns golden and pink. Glass in hand. Intimate and romantic.</span>
